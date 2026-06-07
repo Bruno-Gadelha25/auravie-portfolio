@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
+import { ProjectScreenshots } from "@/components/project-screenshots";
 import { SectionHeading } from "@/components/section-heading";
 import { getProjectCase } from "@/lib/project-cases";
 import { projects, getProjectBySlug } from "@/lib/projects";
@@ -305,6 +306,8 @@ export default async function ProjectDetailPage({
             </div>
           </div>
         </section>
+
+        <ProjectScreenshots project={project} />
 
         <section className="grid gap-5 lg:grid-cols-3">
           <SectionTextCard title="Contexto do projeto" text={projectCase.context} />

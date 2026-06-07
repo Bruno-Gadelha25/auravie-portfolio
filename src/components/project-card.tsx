@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
+import { getProjectScreenshots } from "@/lib/project-media";
 import type { PortfolioProject } from "@/lib/projects";
 import {
   disabledButton,
@@ -19,8 +21,43 @@ type ProjectCardProps = {
 export function ProjectCard({ project, compact = false }: ProjectCardProps) {
   const hasDemo = Boolean(project.demoUrl);
   const hasCode = Boolean(project.githubUrl);
+  const screenshots = getProjectScreenshots(project.slug);
+  const previewScreenshot = screenshots?.desktop;
   return (
     <article className={`${shellCard} group flex h-full flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/[0.07] animate-fade-up`}>
+      <div className="-mx-6 -mt-6 mb-6 overflow-hidden border-b border-white/10">
+        {previewScreenshot ? (
+          <Link href={project.detailsPath} className="block">
+            <div className="relative aspect-[16/10] overflow-hidden bg-slate-950/70">
+              <Image
+                src={previewScreenshot.src}
+                alt={previewScreenshot.alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
+            </div>
+          </Link>
+        ) : (
+          <div className="flex aspect-[16/10] items-center justify-between gap-4 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.92),rgba(8,15,30,0.98))] px-5 py-5">
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/70">
+                {project.deployVercel ? "Demo pública" : "Pré-visualização"}
+              </p>
+              <p className="max-w-xs text-sm leading-6 text-slate-300">
+                {project.deployVercel
+                  ? "Projeto publicado com demo real, mas sem screenshot pública nesta base."
+                  : "Sem screenshot pública confirmada para este projeto."}
+              </p>
+            </div>
+            <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-slate-200">
+              {project.deployVercel ? "Publicado" : "Em desenvolvimento"}
+            </span>
+          </div>
+        )}
+      </div>
+
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-2">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">
