@@ -86,7 +86,9 @@ export async function generateMetadata({
   const projectCase = getProjectCase(project);
 
   return {
-    title: `${projectCase.title} | Auravie Portfolio`,
+    title: {
+      absolute: `${projectCase.title} | Auravie Portfolio`,
+    },
     description: projectCase.description,
     openGraph: {
       type: "article",
