@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
 import { sectionGlass, softCard } from "@/lib/ui";
@@ -93,8 +94,9 @@ export default function JornadaPage() {
             </div>
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

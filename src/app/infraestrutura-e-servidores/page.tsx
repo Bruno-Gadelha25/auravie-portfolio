@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ArrowRight, HardDriveDownload, Network, ServerCog, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, HardDriveDownload, Network, ServerCog, ShieldCheck } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -120,8 +121,9 @@ export default function InfraestruturaPage() {
             })}
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

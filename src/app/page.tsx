@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -36,6 +37,16 @@ const categoryIcons: Record<string, LucideIcon> = {
   "Projetos em Desenvolvimento": Blocks,
 };
 
+const categoryAccentClasses: Record<string, string> = {
+  emerald: "border-emerald-300/20 bg-emerald-300/10 text-emerald-100",
+  cyan: "border-cyan-300/20 bg-cyan-300/10 text-cyan-100",
+  amber: "border-amber-300/20 bg-amber-300/10 text-amber-100",
+  violet: "border-violet-300/20 bg-violet-300/10 text-violet-100",
+  sky: "border-sky-300/20 bg-sky-300/10 text-sky-100",
+  rose: "border-rose-300/20 bg-rose-300/10 text-rose-100",
+  teal: "border-teal-300/20 bg-teal-300/10 text-teal-100",
+};
+
 const homeStats = [
   {
     label: "Projetos catalogados",
@@ -43,9 +54,9 @@ const homeStats = [
     helper: "Bases que viraram case e portfólio.",
   },
   {
-    label: "Sites publicados",
+    label: "Projetos publicados",
     value: String(publishedProjects.length),
-    helper: "Projetos prontos para demonstração.",
+    helper: "Cases com demo real na Vercel.",
   },
   {
     label: "Tecnologias detectadas",
@@ -59,18 +70,16 @@ const homeStats = [
   },
 ];
 
-const featuredCategoryMessage = [
-  "Sites e landing pages com identidade clara",
-  "Projetos web com interface funcional e moderna",
-  "Automações e IA local com foco operacional",
-];
-
 export default function Home() {
+  const emailHref = site.contactEmail
+    ? `mailto:${site.contactEmail}?subject=${encodeURIComponent("Orçamento via Auravie Portfolio")}`
+    : null;
+
   return (
     <div className="pb-8 pt-6 sm:pb-12 sm:pt-10">
       <Container className="space-y-16 lg:space-y-20">
-        <section className={`${sectionGlass} overflow-hidden p-6 sm:p-8 lg:p-10`}>
-          <div className="grid gap-10 lg:grid-cols-[1.35fr_0.9fr] lg:items-center">
+        <section className={`${sectionGlass} overflow-hidden p-6 sm:p-8 lg:p-10 animate-fade-up`}>
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:items-center">
             <div className="space-y-6">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
@@ -83,7 +92,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                  Portfólio profissional para reunir meus projetos com clareza,
+                  Portfólio profissional para reunir projetos com clareza,
                   tecnologia e apresentação sólida.
                 </h1>
                 <p className="max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
@@ -100,6 +109,21 @@ export default function Home() {
                   Ver projetos
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+                {site.whatsappUrl ? (
+                  <a
+                    href={site.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={ghostButton}
+                  >
+                    WhatsApp
+                  </a>
+                ) : null}
+                {emailHref ? (
+                  <a href={emailHref} className={ghostButton}>
+                    E-mail
+                  </a>
+                ) : null}
                 <a
                   href={site.githubProfileUrl}
                   target="_blank"
@@ -108,13 +132,14 @@ export default function Home() {
                 >
                   GitHub
                 </a>
-                <Link href="/contato" className={ghostButton}>
-                  Contato
-                </Link>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-3">
-                {featuredCategoryMessage.map((message) => (
+                {[
+                  "Sites e landing pages com identidade clara",
+                  "Projetos web com interface funcional e moderna",
+                  "Automações e IA local com foco operacional",
+                ].map((message) => (
                   <div
                     key={message}
                     className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-slate-300"
@@ -149,22 +174,28 @@ export default function Home() {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/70">
-                      Stack recorrente
+                      Publicados
                     </p>
                     <h2 className="mt-2 text-lg font-semibold text-white">
-                      Tecnologias com mais presença
+                      Cases com demo disponível
                     </h2>
                   </div>
                   <ShieldCheck className="h-5 w-5 text-cyan-200" />
                 </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {uniqueTechnologies.slice(0, 12).map((technology) => (
-                    <span
-                      key={technology}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300"
+                <div className="mt-4 grid gap-3">
+                  {publishedProjects.slice(0, 4).map((project) => (
+                    <div
+                      key={project.slug}
+                      className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3"
                     >
-                      {technology}
-                    </span>
+                      <div>
+                        <p className="text-sm font-semibold text-white">{project.name}</p>
+                        <p className="text-xs text-slate-400">{project.category}</p>
+                      </div>
+                      <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-100">
+                        Publicado
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -205,8 +236,11 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-4">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-100">
-                        <Icon className="h-5 w-5" />
+                      <span
+                        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${categoryAccentClasses[category.accent]}`}
+                      >
+                        <Icon className="h-4 w-4" />
+                        {category.label}
                       </span>
                       <ArrowRight className="h-4 w-4 text-slate-500 transition group-hover:translate-x-0.5 group-hover:text-cyan-200" />
                     </div>
@@ -262,6 +296,8 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );

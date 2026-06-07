@@ -1,7 +1,15 @@
 import Link from "next/link";
-import { ArrowUpRight, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
 import type { PortfolioProject } from "@/lib/projects";
-import { ghostButton, primaryButton, shellCard, statusClass, potentialClass } from "@/lib/ui";
+import {
+  disabledButton,
+  ghostButton,
+  primaryButton,
+  secondaryButton,
+  shellCard,
+  statusClass,
+  potentialClass,
+} from "@/lib/ui";
 
 type ProjectCardProps = {
   project: PortfolioProject;
@@ -9,22 +17,30 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, compact = false }: ProjectCardProps) {
+  const hasDemo = Boolean(project.demoUrl);
+  const hasCode = Boolean(project.githubUrl);
   return (
-    <article className={`${shellCard} flex h-full flex-col overflow-hidden p-6`}>
+    <article className={`${shellCard} group flex h-full flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/[0.07] animate-fade-up`}>
       <div className="flex items-start justify-between gap-4">
-        <div>
+        <div className="space-y-2">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">
             {project.category}
           </p>
-          <h3 className="mt-2 text-xl font-semibold tracking-tight text-white">
+          <h3 className="text-xl font-semibold tracking-tight text-white">
             {project.name}
           </h3>
         </div>
+
         {project.deployVercel ? (
-          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-100">
-            <BadgeCheck className="h-3.5 w-3.5" />
-            Vercel
-          </span>
+          <div className="flex flex-col items-end gap-2">
+            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-100">
+              <BadgeCheck className="h-3.5 w-3.5" />
+              Publicado
+            </span>
+            <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-100">
+              Vercel
+            </span>
+          </div>
         ) : null}
       </div>
 
@@ -37,7 +53,7 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
         <span className={`rounded-full border px-3 py-1 text-xs font-medium ${potentialClass(project.portfolioPotential)}`}>
           Potencial {project.portfolioPotential}
         </span>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200">
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-200">
           {project.type}
         </span>
       </div>
@@ -66,20 +82,37 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
         ) : null}
 
         <div className="flex flex-wrap gap-3 pt-1">
-          <Link href={project.demoPath} className={primaryButton}>
-            Demo
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={ghostButton}
-        >
-          <GitBranch className="h-4 w-4" />
-          GitHub
-        </a>
-      </div>
+          {hasDemo ? (
+            <a
+              href={project.demoUrl!}
+              target="_blank"
+              rel="noreferrer"
+              className={primaryButton}
+            >
+              Ver site
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          ) : (
+            <Link href={project.detailsPath} className={secondaryButton}>
+              Ver detalhes
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
+
+          {hasCode ? (
+            <a
+              href={project.githubUrl!}
+              target="_blank"
+              rel="noreferrer"
+              className={ghostButton}
+            >
+              <GitBranch className="h-4 w-4" />
+              Código
+            </a>
+          ) : (
+            <span className={disabledButton}>Em desenvolvimento</span>
+          )}
+        </div>
       </div>
     </article>
   );

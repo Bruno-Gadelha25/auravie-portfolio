@@ -24,18 +24,24 @@ export const metadata: Metadata = {
   description: site.description,
   keywords: [
     "Auravie Portfolio",
+    "portfólio profissional",
     "Next.js",
     "TypeScript",
     "Tailwind CSS",
-    "Web design",
+    "web design",
+    "landing pages",
+    "automações",
     "IA",
-    "Infraestrutura",
+    "infraestrutura local",
+    "homelab",
   ],
   openGraph: {
     type: "website",
     url: "/",
     title: site.name,
     description: site.description,
+    locale: "pt_BR",
+    siteName: site.name,
     images: [
       {
         url: "/opengraph-image",
@@ -66,12 +72,21 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-screen bg-[#02040d] text-slate-100">
-        <div id="top" className="relative flex min-h-screen flex-col overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute left-[-12%] top-[-8%] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
-            <div className="absolute right-[-10%] top-[18%] h-[32rem] w-[32rem] rounded-full bg-emerald-400/10 blur-3xl" />
-            <div className="absolute bottom-[-12%] left-[18%] h-[24rem] w-[24rem] rounded-full bg-sky-400/10 blur-3xl" />
+  <body className="min-h-screen bg-[#02040d] text-slate-100">
+      <div id="top" className="relative flex min-h-screen flex-col overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div
+              className="animate-float absolute left-[-12%] top-[-8%] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl"
+              style={{ animationDuration: "16s" }}
+            />
+            <div
+              className="animate-float absolute right-[-10%] top-[18%] h-[32rem] w-[32rem] rounded-full bg-emerald-400/10 blur-3xl"
+              style={{ animationDuration: "18s" }}
+            />
+            <div
+              className="animate-float absolute bottom-[-12%] left-[18%] h-[24rem] w-[24rem] rounded-full bg-sky-400/10 blur-3xl"
+              style={{ animationDuration: "20s" }}
+            />
           </div>
           <SiteHeader />
           <main className="relative z-10 flex-1">{children}</main>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectBrowser } from "@/components/project-browser";
 import { SectionHeading } from "@/components/section-heading";
@@ -9,7 +10,7 @@ import { sectionGlass, softCard } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Projetos",
   description:
-    "Lista completa dos projetos do Auravie Portfolio, com busca, filtro por categoria e destaque para os projetos publicados na Vercel.",
+    "Lista completa dos projetos do Auravie Portfolio, com busca, filtro por categoria, destaque para projetos publicados e acesso rápido aos cases.",
 };
 
 type ProjectsPageProps = {
@@ -64,8 +65,9 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
         </section>
 
         <ProjectBrowser projects={projects} initialCategory={initialCategory} />
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

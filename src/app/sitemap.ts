@@ -15,11 +15,10 @@ const staticRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = staticRoutes.concat(projects.map((project) => project.demoPath));
+  const routes = staticRoutes.concat(projects.map((project) => project.detailsPath));
 
   return routes.map((route) => ({
     url: `${site.vercelProjectUrl}${route}`,
     lastModified: new Date(),
   }));
 }
-

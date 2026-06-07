@@ -2,10 +2,11 @@ export const site = {
   name: "Auravie Portfolio",
   shortName: "Auravie",
   description:
-    "Portfólio profissional para reunir sites, landing pages, projetos web, experimentos com IA e infraestrutura local de estudos.",
+    "Portfólio profissional para reunir sites, landing pages, projetos web, automações, experimentos com IA e infraestrutura local de estudos.",
   githubProfileUrl: "https://github.com/Bruno-Gadelha25",
-  contactEmail: null as string | null,
-  whatsappUrl: null as string | null,
+  contactEmail: "brunogadelha2005@gmail.com",
+  whatsappUrl:
+    "https://wa.me/5561984208604?text=Ol%C3%A1%2C%20Bruno%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20sobre%20um%20projeto.",
   vercelProjectSlug: "auravie-portfolio",
   vercelProjectUrl: "https://auravie-portfolio.vercel.app",
 };
@@ -88,4 +89,3 @@ export const siteCategories: SiteCategory[] = [
     accent: "teal",
   },
 ];
-

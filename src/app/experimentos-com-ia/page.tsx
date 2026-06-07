@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BrainCircuit, ArrowRight, Cpu, DatabaseZap, FileSearch, Workflow } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -120,8 +121,9 @@ export default function ExperimentosComIaPage() {
             })}
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

@@ -24,9 +24,41 @@ body {
     linear-gradient(180deg, #02040d 0%, #050816 42%, #02040d 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  background-attachment: fixed;
 }
 
 ::selection {
   background: rgba(34, 211, 238, 0.3);
   color: #f8fafc;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-float {
+  animation: float 14s ease-in-out infinite;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Gamepad2, ShoppingBag } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -102,8 +103,9 @@ export default function ProjectsWebPage() {
             </div>
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

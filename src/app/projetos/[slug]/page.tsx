@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { projects, getProjectBySlug } from "@/lib/projects";
 import {
+  disabledButton,
+  ghostButton,
   primaryButton,
   sectionGlass,
+  secondaryButton,
   softCard,
   statusClass,
   potentialClass,
@@ -39,6 +43,26 @@ export async function generateMetadata({
   return {
     title: project.name,
     description: project.summary,
+    openGraph: {
+      type: "article",
+      title: `${project.name} | Auravie Portfolio`,
+      description: project.summary,
+      url: `/projetos/${project.slug}`,
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: project.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.name,
+      description: project.summary,
+      images: ["/opengraph-image"],
+    },
   };
 }
 
@@ -52,20 +76,31 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const hasDemo = Boolean(project.demoUrl);
+  const hasCode = Boolean(project.githubUrl);
+
   return (
     <div className="py-6 sm:py-10">
       <Container className="space-y-10">
-        <section className={`${sectionGlass} p-6 sm:p-8 lg:p-10`}>
+        <section className={`${sectionGlass} p-6 sm:p-8 lg:p-10 animate-fade-up`}>
           <div className="flex flex-wrap items-center gap-3">
-            <Link href="/projetos" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/10">
+            <Link
+              href="/projetos"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/10"
+            >
               <ArrowLeft className="h-4 w-4" />
               Voltar aos projetos
             </Link>
             {project.deployVercel ? (
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-100">
-                <BadgeCheck className="h-4 w-4" />
-                Publicado na Vercel
-              </span>
+              <>
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-100">
+                  <BadgeCheck className="h-4 w-4" />
+                  Publicado
+                </span>
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-100">
+                  Vercel
+                </span>
+              </>
             ) : null}
           </div>
 
@@ -88,22 +123,39 @@ export default async function ProjectDetailPage({
                 <span className={`rounded-full border px-3 py-1 text-xs font-medium ${potentialClass(project.portfolioPotential)}`}>
                   Potencial {project.portfolioPotential}
                 </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200">
+                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-200">
                   {project.type}
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={primaryButton}
-                >
-                  GitHub
-                  <GitBranch className="h-4 w-4" />
-                </a>
-                <Link href="/contato" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10">
+                {hasDemo ? (
+                  <a
+                    href={project.demoUrl!}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={primaryButton}
+                  >
+                    Ver site
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <span className={disabledButton}>Em desenvolvimento</span>
+                )}
+
+                {hasCode ? (
+                  <a
+                    href={project.githubUrl!}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={ghostButton}
+                  >
+                    <GitBranch className="h-4 w-4" />
+                    Código
+                  </a>
+                ) : null}
+
+                <Link href="/contato" className={secondaryButton}>
                   Falar sobre este projeto
                 </Link>
               </div>
@@ -118,7 +170,7 @@ export default async function ProjectDetailPage({
                   {project.technologies.map((technology) => (
                     <span
                       key={technology}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300"
                     >
                       {technology}
                     </span>
@@ -127,12 +179,22 @@ export default async function ProjectDetailPage({
               </div>
               <div className="border-t border-white/10 pt-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
-                  Deploy
+                  Publicação
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-300">
                   {project.deployVercel
-                    ? "Projetado para publicação na Vercel."
-                    : "Não é uma base voltada para deploy público na Vercel."}
+                    ? "Demo publicada na Vercel."
+                    : "Sem demo pública confirmada nesta fase."}
+                </p>
+              </div>
+              <div className="border-t border-white/10 pt-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                  Código
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                  {project.publishGithub
+                    ? "Repositório público disponível."
+                    : "Ainda não há repositório público confirmado."}
                 </p>
               </div>
             </div>
@@ -149,7 +211,10 @@ export default async function ProjectDetailPage({
             </div>
             <div className="mt-5 grid gap-3">
               {project.improvements.map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm leading-6 text-slate-300">
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                >
                   {item}
                 </div>
               ))}
@@ -160,7 +225,10 @@ export default async function ProjectDetailPage({
             <h2 className="text-xl font-semibold text-white">Riscos e atenção</h2>
             <div className="mt-5 grid gap-3">
               {project.risks.map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm leading-6 text-slate-300">
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                >
                   {item}
                 </div>
               ))}
@@ -185,44 +253,19 @@ export default async function ProjectDetailPage({
               </p>
               <p className="mt-3 text-sm leading-6 text-slate-300">
                 {project.publishGithub
-                  ? "Vale publicar no GitHub com saneamento."
-                  : "Ainda não é uma base pensada para publicação pública no GitHub."}
+                  ? "O código pode ser revisado publicamente."
+                  : "O código ainda não foi disponibilizado publicamente."}
               </p>
               <p className="mt-2 text-sm leading-6 text-slate-300">
                 {project.deployVercel
-                  ? "Vale fazer deploy na Vercel."
-                  : "Não vale fazer deploy na Vercel nesta fase."}
+                  ? "O projeto está publicado na Vercel."
+                  : "O projeto ainda não tem demo pública confirmada."}
               </p>
             </div>
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={project.githubUrl} target="_blank" rel="noreferrer" className={primaryButton}>
-              GitHub
-              <GitBranch className="h-4 w-4" />
-            </a>
-            <Link href="/projetos" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10">
-              Ver mais projetos
-            </Link>
-          </div>
         </section>
 
-        <section className={`${sectionGlass} p-6 sm:p-8`}>
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
-                Próximo passo
-              </p>
-              <h2 className="mt-2 text-xl font-semibold text-white">
-                Levar esse projeto para uma apresentação ainda mais forte
-              </h2>
-            </div>
-            <Link href="/contato" className={primaryButton}>
-              Conversar sobre o projeto
-              <ArrowLeft className="h-4 w-4 rotate-180" />
-            </Link>
-          </div>
-        </section>
+        <ContactBanner />
       </Container>
     </div>
   );

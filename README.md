@@ -1,10 +1,43 @@
 # Auravie Portfolio
 
-Portfólio profissional para reunir sites, landing pages, projetos web, experimentos com IA e infraestrutura local de estudos.
+Portfólio profissional para reunir sites, landing pages, projetos web, automações, experimentos com IA e infraestrutura local de estudos.
 
-## Visão Geral
+## Links oficiais
 
-O **Auravie Portfolio** foi criado com foco em apresentação profissional para clientes e recrutadores. O site organiza projetos reais por categoria, destaca entregas publicadas e apresenta a trajetória técnica de forma clara.
+- Site: https://auravie-portfolio.vercel.app
+- GitHub: https://github.com/Bruno-Gadelha25/auravie-portfolio
+
+## Projetos incluídos
+
+- Auravie Portfolio
+- ConstruFort Materiais
+- Corte Nobre Barbearia
+- Padaria Jocker
+- Void Store
+- Void Sudoku
+- Jullinha.ai
+- Servidor Local / Homelab
+
+## Links confirmados
+
+- Auravie Portfolio
+  - GitHub: https://github.com/Bruno-Gadelha25/auravie-portfolio
+  - Demo: https://auravie-portfolio.vercel.app
+- ConstruFort Materiais
+  - GitHub: https://github.com/Bruno-Gadelha25/construfort-portfolio
+  - Demo: https://construfort-portfolio.vercel.app
+- Corte Nobre Barbearia
+  - GitHub: https://github.com/Bruno-Gadelha25/Barbearia-Nobre-
+  - Demo: https://barbearia-nobre-ten.vercel.app/
+- Padaria Jocker
+  - GitHub: https://github.com/Bruno-Gadelha25/Padaria-Jocker
+  - Demo: https://padaria-jocker.vercel.app
+
+## Contato
+
+- E-mail: brunogadelha2005@gmail.com
+- WhatsApp: https://wa.me/5561984208604?text=Ol%C3%A1%2C%20Bruno%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20sobre%20um%20projeto.
+- GitHub: https://github.com/Bruno-Gadelha25
 
 ## Stack
 
@@ -13,44 +46,37 @@ O **Auravie Portfolio** foi criado com foco em apresentação profissional para 
 - Tailwind CSS
 - Lucide React
 
-## Páginas
-
-- Home
-- Projetos
-- Sites e Landing Pages
-- Projetos Web
-- Experimentos com IA
-- Infraestrutura e Servidores
-- Jornada
-- Sobre
-- Contato
-
-## Destaques
-
-- Busca e filtro por categoria
-- Cards de projetos com GitHub e Demo
-- SEO básico
-- Open Graph
-- `robots.txt`
-- `sitemap.xml`
-- Favicon próprio
-- Estrutura pronta para Vercel
-
-## Scripts
+## Como rodar localmente
 
 ```bash
 npm install
 npm run dev
+```
+
+## Verificações recomendadas
+
+```bash
 npm run lint
 npm run build
 ```
 
+## Como adicionar novos projetos
+
+1. Abra `src/lib/projects.ts`.
+2. Adicione um novo objeto no array `projects`.
+3. Preencha `name`, `category`, `type`, `technologies`, `status`, `portfolioPotential`, `summary`, `improvements`, `publishGithub`, `deployVercel`, `risks`, `githubUrl`, `demoUrl` e `detailsPath`.
+4. Se o projeto merecer destaque, inclua o `slug` em `featuredProjectSlugs`.
+5. Rode `npm run lint` e `npm run build`.
+
+## Como editar contatos
+
+1. Abra `src/lib/site.ts`.
+2. Atualize `contactEmail`.
+3. Atualize `whatsappUrl` se o número ou a mensagem mudarem.
+4. Se quiser apontar o botão de GitHub para outro perfil, ajuste `githubProfileUrl`.
+
 ## Observações
 
-- O site não inclui dados sensíveis.
-- Canais diretos de contato podem ser ativados depois com os dados oficiais.
-- Projetos em desenvolvimento aparecem marcados como tal.
-
-## Deploy
-
-Preparado para publicação na Vercel.
+- O site foi pensado para apresentar trabalhos reais com leitura profissional.
+- Projetos em desenvolvimento permanecem marcados como `em andamento`.
+- Não há dados sensíveis versionados no repositório.

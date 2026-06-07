@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Megaphone, Sparkles } from "lucide-react";
+import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -104,8 +105,9 @@ export default function SitesLandingPagesPage() {
             </div>
           </div>
         </section>
+
+        <ContactBanner />
       </Container>
     </div>
   );
 }
-

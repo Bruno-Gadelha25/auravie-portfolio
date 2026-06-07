@@ -1,22 +1,22 @@
 export const shellCard =
-  "rounded-3xl border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl";
+  "rounded-3xl border border-white/10 bg-white/[0.05] shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl";
 
-export const softCard = "rounded-2xl border border-white/10 bg-white/5";
+export const softCard = "rounded-2xl border border-white/10 bg-white/[0.04]";
 
 export const sectionGlass =
   "rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-xl";
 
 export const primaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition duration-200 hover:-translate-y-0.5 hover:bg-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-white/70 bg-gradient-to-r from-cyan-100 via-white to-emerald-100 px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_10px_30px_rgba(34,211,238,0.15)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(34,211,238,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 export const secondaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-400/10 px-5 py-3 text-sm font-semibold text-cyan-50 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 export const ghostButton =
   "inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-3 text-sm font-semibold text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 export const disabledButton =
-  "inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-500";
+  "inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-500";
 
 export function navLinkClass(active: boolean) {
   return [
@@ -50,4 +50,3 @@ export function potentialClass(potential: string) {
 
   return "border-slate-400/25 bg-slate-400/10 text-slate-200";
 }
-
