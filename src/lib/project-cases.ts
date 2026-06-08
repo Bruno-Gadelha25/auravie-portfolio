@@ -13,6 +13,33 @@ export type ProjectCaseContent = {
 };
 
 const projectCases: Record<string, ProjectCaseContent> = {
+  "dashboard-netflix": {
+    title: "Dashboard Netflix - Análise de Dados",
+    description:
+      "Dashboard visual para análise do catálogo da Netflix com linha temporal, indicadores, rankings e conclusão baseada em storytelling de dados.",
+    context:
+      "O dataset da Netflix reúne filmes e séries de vários países, anos, gêneros e classificações. O desafio do projeto foi transformar essa base em uma leitura narrativa que mostrasse evolução temporal e padrões de conteúdo.",
+    problem:
+      "Não bastava empilhar gráficos soltos. A análise precisava responder uma pergunta central e conectar quantidade, tipo de conteúdo, origem geográfica e evolução histórica em uma mesma história visual.",
+    solution:
+      "Foi construído um dashboard em Streamlit com filtros laterais, indicadores principais, linha temporal, comparação entre filmes e séries, rankings de países e gêneros, análise de duração e uma conclusão automática baseada nos dados filtrados.",
+    commercialValue:
+      "O resultado demonstra domínio de análise de dados, organização visual e capacidade de transformar um dataset bruto em uma apresentação clara para estudo, portfólio ou tomada de decisão.",
+    technicalHighlights: [
+      "Python e Pandas para limpeza e análise",
+      "SQLite para persistência estruturada",
+      "Plotly para visualizações interativas",
+      "Streamlit para dashboard web",
+      "Vercel para vitrine pública do projeto",
+    ],
+    demonstrates: [
+      "Storytelling de dados",
+      "Leitura temporal do catálogo",
+      "Filtros interativos",
+      "Conclusão automática orientada por dados",
+    ],
+    statusNote: "Projeto pronto, com vitrine pública na Vercel e dashboard interativo em Streamlit.",
+  },
   "construfort-materiais": {
     title: "ConstruFort Materiais",
     description:

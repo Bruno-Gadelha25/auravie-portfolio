@@ -9,6 +9,16 @@ export type ProjectScreenshotSet = {
 };
 
 const projectScreenshotSets: Record<string, ProjectScreenshotSet> = {
+  "dashboard-netflix": {
+    desktop: {
+      src: "/projects/screenshots/dashboard-netflix/desktop.png",
+      alt: "Captura desktop do Dashboard Netflix, com indicadores, linha temporal e gráficos de storytelling de dados.",
+    },
+    mobile: {
+      src: "/projects/screenshots/dashboard-netflix/mobile.png",
+      alt: "Captura mobile do Dashboard Netflix, com a versão responsiva da análise do catálogo.",
+    },
+  },
   "auravie-portfolio": {
     desktop: {
       src: "/projects/screenshots/auravie-portfolio/desktop.jpg",

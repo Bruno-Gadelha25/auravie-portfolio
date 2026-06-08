@@ -48,6 +48,31 @@ export const projects: PortfolioProject[] = [
     detailsPath: "/projetos/auravie-portfolio",
   },
   {
+    slug: "dashboard-netflix",
+    name: "Dashboard Netflix",
+    category: "Dashboards e Dados",
+    type: "Dashboard de análise de dados / storytelling",
+    technologies: ["Python", "Pandas", "SQLite", "Plotly", "Streamlit", "Vercel"],
+    status: "pronto",
+    portfolioPotential: "alto",
+    summary:
+      "Dashboard visual do catálogo da Netflix com linha temporal, filtros, indicadores principais e conclusão automática baseada em storytelling de dados.",
+    improvements: [
+      "Adicionar novas métricas comparativas por período",
+      "Expandir a leitura por país e gênero",
+      "Evoluir a vitrine pública com mais capturas do dashboard",
+    ],
+    publishGithub: true,
+    deployVercel: true,
+    risks: [
+      "A versão pública na Vercel é uma vitrine estática",
+      "A análise interativa completa roda na aplicação Streamlit",
+    ],
+    githubUrl: "https://github.com/Bruno-Gadelha25/dashboard-netflix-python",
+    demoUrl: "https://dashboard-netflix-python.vercel.app",
+    detailsPath: "/projetos/dashboard-netflix",
+  },
+  {
     slug: "construfort-materiais",
     name: "ConstruFort Materiais",
     category: "Sites e Landing Pages",
@@ -265,6 +290,7 @@ export const projects: PortfolioProject[] = [
 
 export const featuredProjectSlugs = [
   "auravie-portfolio",
+  "dashboard-netflix",
   "construfort-materiais",
   "corte-nobre-barbearia",
   "padaria-jocker",
