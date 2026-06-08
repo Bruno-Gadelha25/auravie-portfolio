@@ -14,7 +14,7 @@ export type ProjectCaseContent = {
 
 const projectCases: Record<string, ProjectCaseContent> = {
   "dashboard-netflix": {
-    title: "Dashboard Netflix - Análise de Dados",
+    title: "Dashboard Netflix - Storytelling de Dados",
     description:
       "Dashboard visual para análise do catálogo da Netflix com linha temporal, indicadores, rankings e conclusão baseada em storytelling de dados.",
     context:

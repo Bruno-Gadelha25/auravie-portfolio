@@ -49,7 +49,7 @@ export const projects: PortfolioProject[] = [
   },
   {
     slug: "dashboard-netflix",
-    name: "Dashboard Netflix",
+    name: "Dashboard Netflix - Storytelling de Dados",
     category: "Dashboards e Dados",
     type: "Dashboard de análise de dados / storytelling",
     technologies: ["Python", "Pandas", "SQLite", "Plotly", "Streamlit", "Vercel"],
