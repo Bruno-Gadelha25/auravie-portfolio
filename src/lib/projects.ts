@@ -68,7 +68,7 @@ export const projects: PortfolioProject[] = [
       "A versão pública na Vercel é uma vitrine estática",
       "A análise interativa completa roda na aplicação Streamlit",
     ],
-    githubUrl: "https://github.com/Bruno-Gadelha25/dashboard-netflix-python",
+    githubUrl: "https://github.com/Bruno-Gadelha25/dashboard-netflix-storytelling",
     demoUrl: "https://dashboard-netflix-python.vercel.app",
     detailsPath: "/projetos/dashboard-netflix",
   },

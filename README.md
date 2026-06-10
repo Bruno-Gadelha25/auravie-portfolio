@@ -11,6 +11,7 @@ Portfólio profissional para reunir sites, landing pages, projetos web, automaç
 
 - Auravie Portfolio
 - ConstruFort Materiais
+- Dashboard Netflix - Storytelling de Dados
 - Corte Nobre Barbearia
 - Padaria Jocker
 - Void Store
@@ -26,6 +27,9 @@ Portfólio profissional para reunir sites, landing pages, projetos web, automaç
 - ConstruFort Materiais
   - GitHub: https://github.com/Bruno-Gadelha25/construfort-portfolio
   - Demo: https://construfort-portfolio.vercel.app
+- Dashboard Netflix - Storytelling de Dados
+  - GitHub: https://github.com/Bruno-Gadelha25/dashboard-netflix-storytelling
+  - Demo: https://dashboard-netflix-python.vercel.app
 - Corte Nobre Barbearia
   - GitHub: https://github.com/Bruno-Gadelha25/Barbearia-Nobre-
   - Demo: https://barbearia-nobre-ten.vercel.app/
