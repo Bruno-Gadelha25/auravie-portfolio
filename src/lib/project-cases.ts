@@ -144,7 +144,7 @@ const projectCases: Record<string, ProjectCaseContent> = {
       "Integração full-stack",
       "Base para evolução comercial",
     ],
-    statusNote: "Em desenvolvimento, sem demo pública confirmada.",
+    statusNote: "Em desenvolvimento, com vitrine pública na Vercel.",
   },
   "jullinha-ai": {
     title: "Jullinha.ai",
@@ -171,7 +171,7 @@ const projectCases: Record<string, ProjectCaseContent> = {
       "Integração entre ferramentas",
       "Pensamento de produto com IA",
     ],
-    statusNote: "Em desenvolvimento, com foco em automações, relatórios e organização de conhecimento.",
+    statusNote: "Em desenvolvimento, com interface pública na Vercel e operação local em paralelo.",
   },
   "servidor-local-homelab": {
     title: "Servidor Local / Homelab",
@@ -225,14 +225,14 @@ const projectCases: Record<string, ProjectCaseContent> = {
       "Produto web enxuto",
       "Boas práticas de componentização",
     ],
-    statusNote: "Projeto pronto, sem demo pública confirmada.",
+    statusNote: "Em andamento, com vitrine pública na Vercel.",
   },
 };
 
 function buildFallbackCase(project: PortfolioProject): ProjectCaseContent {
   const statusNote =
     project.status === "em andamento"
-      ? "Em desenvolvimento."
+      ? "Em andamento."
       : project.deployVercel
         ? "Projeto pronto e publicado na Vercel."
         : "Projeto pronto, sem demo pública confirmada.";

@@ -39,7 +39,7 @@ function getPublicationLabel(status: string, deployVercel: boolean) {
   }
 
   if (status === "em andamento") {
-    return "Em desenvolvimento";
+    return "Em andamento";
   }
 
   return "Sem demo pública confirmada";

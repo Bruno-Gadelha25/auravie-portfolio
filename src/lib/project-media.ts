@@ -9,6 +9,36 @@ export type ProjectScreenshotSet = {
 };
 
 const projectScreenshotSets: Record<string, ProjectScreenshotSet> = {
+  "void-store": {
+    desktop: {
+      src: "/projects/void-store/preview.png",
+      alt: "Captura desktop da Void Store, com hero gamer, navegação principal e vitrine de ofertas.",
+    },
+    mobile: {
+      src: "/projects/void-store/mobile.png",
+      alt: "Captura mobile da Void Store, com a versão responsiva da vitrine gamer e das ofertas.",
+    },
+  },
+  "void-sudoku": {
+    desktop: {
+      src: "/projects/void-sudoku/preview.png",
+      alt: "Captura desktop do Void Sudoku, com a tela inicial do jogo e o tabuleiro em destaque.",
+    },
+    mobile: {
+      src: "/projects/void-sudoku/mobile.png",
+      alt: "Captura mobile do Void Sudoku, com a experiência responsiva do puzzle.",
+    },
+  },
+  "jullinha-ai": {
+    desktop: {
+      src: "/projects/jullinha-ai/preview.png",
+      alt: "Captura desktop da Jullinha.ai, com o painel operacional e o status da assistente.",
+    },
+    mobile: {
+      src: "/projects/jullinha-ai/mobile.png",
+      alt: "Captura mobile da Jullinha.ai, com a versão responsiva do painel da assistente.",
+    },
+  },
   "dashboard-netflix": {
     desktop: {
       src: "/projects/screenshots/dashboard-netflix/desktop.png",

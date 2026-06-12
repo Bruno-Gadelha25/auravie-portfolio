@@ -15,6 +15,7 @@ export type PortfolioProject = {
   improvements: string[];
   publishGithub: boolean;
   deployVercel: boolean;
+  showPreview?: boolean;
   risks: string[];
   githubUrl: string | null;
   demoUrl: string | null;
@@ -28,7 +29,7 @@ export const projects: PortfolioProject[] = [
     category: "Sites e Landing Pages",
     type: "Portfólio profissional / site institucional",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "SEO", "Vercel"],
-    status: "pronto",
+    status: "em andamento",
     portfolioPotential: "alto",
     summary:
       "Site principal do portfólio com apresentação de projetos, jornada técnica, contato profissional e navegação organizada para clientes e recrutadores.",
@@ -181,13 +182,13 @@ export const projects: PortfolioProject[] = [
       "Padronizar documentação e screenshots",
     ],
     publishGithub: false,
-    deployVercel: false,
+    deployVercel: true,
     risks: [
       "Há várias versões do mesmo produto",
       "Arquivos locais precisam de revisão antes da publicação",
     ],
     githubUrl: null,
-    demoUrl: null,
+    demoUrl: "https://void-store-live.vercel.app",
     detailsPath: "/projetos/void-store",
   },
   {
@@ -196,7 +197,7 @@ export const projects: PortfolioProject[] = [
     category: "Projetos Web",
     type: "Jogo web / puzzle interativo",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Lucide"],
-    status: "pronto",
+    status: "em andamento",
     portfolioPotential: "alto",
     summary:
       "Jogo de Sudoku com interface moderna e bom potencial de demonstração front-end.",
@@ -206,13 +207,13 @@ export const projects: PortfolioProject[] = [
       "Refinar microinterações",
     ],
     publishGithub: false,
-    deployVercel: false,
+    deployVercel: true,
     risks: [
       "Poucos riscos",
       "Vale revisar a experiência final e as telas públicas",
     ],
     githubUrl: null,
-    demoUrl: null,
+    demoUrl: "https://void-sudoku.vercel.app",
     detailsPath: "/projetos/void-sudoku",
   },
   {
@@ -243,13 +244,13 @@ export const projects: PortfolioProject[] = [
       "Separar melhor o core dos módulos de suporte",
     ],
     publishGithub: false,
-    deployVercel: false,
+    deployVercel: true,
     risks: [
       "Escopo amplo",
       "Dependência forte de componentes locais e operacionais",
     ],
     githubUrl: null,
-    demoUrl: null,
+    demoUrl: "https://jullinha.vercel.app",
     detailsPath: "/projetos/jullinha-ai",
   },
   {
@@ -278,6 +279,7 @@ export const projects: PortfolioProject[] = [
     ],
     publishGithub: false,
     deployVercel: false,
+    showPreview: false,
     risks: [
       "Pode expor configuração local",
       "Pode revelar integrações e fluxos internos",
