@@ -29,9 +29,10 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
   const previewScreenshot = screenshots?.desktop;
   const showPreview = project.showPreview !== false;
   const statusLabel = formatStatusLabel(project.status);
+  const cardHeightClass = showPreview ? "h-full" : "h-auto";
 
   return (
-    <article className={`${shellCard} group flex h-full flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/[0.07] animate-fade-up`}>
+    <article className={`${shellCard} group flex ${cardHeightClass} flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/[0.07] animate-fade-up`}>
       {showPreview ? (
         <div className="-mx-6 -mt-6 mb-6 overflow-hidden border-b border-white/10">
           {previewScreenshot ? (
