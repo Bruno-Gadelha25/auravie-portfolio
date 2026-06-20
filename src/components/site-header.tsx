@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, BriefcaseBusiness, GitBranch } from "lucide-react";
 import { Container } from "@/components/container";
+import { isCleanVersion } from "@/lib/portfolio";
 import { mainNav, site } from "@/lib/site";
 import { ghostButton, navLinkClass } from "@/lib/ui";
 
@@ -50,16 +51,18 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <a
-              href={site.githubProfileUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={ghostButton}
-            >
-              <GitBranch className="h-4 w-4" />
-              GitHub
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+            {!isCleanVersion ? (
+              <a
+                href={site.githubProfileUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={ghostButton}
+              >
+                <GitBranch className="h-4 w-4" />
+                GitHub
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            ) : null}
             <Link href="/contato" className={ghostButton}>
               <BriefcaseBusiness className="h-4 w-4" />
               Contato

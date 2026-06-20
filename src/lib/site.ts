@@ -1,3 +1,5 @@
+import { publicSiteUrl } from "@/lib/portfolio";
+
 export const site = {
   name: "Auravie Portfolio",
   shortName: "Auravie",
@@ -8,7 +10,7 @@ export const site = {
   whatsappUrl:
     "https://wa.me/5561984208604?text=Ol%C3%A1%2C%20Bruno%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20sobre%20um%20projeto.",
   vercelProjectSlug: "auravie-portfolio",
-  vercelProjectUrl: "https://auravie-portfolio.vercel.app",
+  vercelProjectUrl: publicSiteUrl,
 };
 
 export type SiteCategory = {

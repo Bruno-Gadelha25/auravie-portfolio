@@ -7,6 +7,15 @@ Portfólio profissional para reunir sites, landing pages, projetos web, automaç
 - Site: https://auravie-portfolio.vercel.app
 - GitHub: https://github.com/Bruno-Gadelha25/auravie-portfolio
 
+## Deploys na Vercel
+
+- `auravie-portfolio` para a versão completa
+- `auravie-portfolio-clean` para a versão limpa
+- Os dois projetos devem apontar para o mesmo repositório e a mesma branch principal
+- Variáveis principais:
+  - `NEXT_PUBLIC_PORTFOLIO_VARIANT=full` ou `clean`
+  - `NEXT_PUBLIC_SITE_URL` com o domínio de produção de cada projeto
+
 ## Projetos incluídos
 
 - Auravie Portfolio
@@ -72,12 +81,14 @@ npm run build
 4. Se o projeto merecer destaque, inclua o `slug` em `featuredProjectSlugs`.
 5. Rode `npm run lint` e `npm run build`.
 
-## Como editar contatos
+## Como editar contatos e variante
 
 1. Abra `src/lib/site.ts`.
 2. Atualize `contactEmail`.
 3. Atualize `whatsappUrl` se o número ou a mensagem mudarem.
 4. Se quiser apontar o botão de GitHub para outro perfil, ajuste `githubProfileUrl`.
+5. Abra `src/lib/portfolio.ts` se quiser mudar a lógica da variante `full` / `clean`.
+6. Em cada projeto da Vercel, ajuste `NEXT_PUBLIC_PORTFOLIO_VARIANT` e `NEXT_PUBLIC_SITE_URL`.
 
 ## Observações
 

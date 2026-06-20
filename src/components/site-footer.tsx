@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, GitBranch, Mail, MessageCircle } from "lucide-react";
 import { Container } from "@/components/container";
+import { isCleanVersion } from "@/lib/portfolio";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -8,6 +9,7 @@ export function SiteFooter() {
   const emailHref = site.contactEmail
     ? `mailto:${site.contactEmail}?subject=${encodeURIComponent("Orçamento via Auravie Portfolio")}`
     : null;
+  const sectionTitle = isCleanVersion ? "Explorar" : "Contato";
 
   return (
     <footer className="border-t border-white/10 bg-slate-950/60">
@@ -53,47 +55,64 @@ export function SiteFooter() {
 
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
-              Contato
+              {sectionTitle}
             </p>
-            <ul className="mt-4 grid gap-3 text-sm text-slate-400">
-              <li>
-                <a
-                  href={site.githubProfileUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 transition hover:text-white"
-                >
-                  <GitBranch className="h-4 w-4" />
-                  GitHub
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </li>
-              {emailHref ? (
+            {isCleanVersion ? (
+              <div className="mt-4 grid gap-3 text-sm text-slate-400">
+                <p className="leading-6">
+                  Nesta versão, os canais externos ficam ocultos.
+                </p>
+                <Link href="/projetos" className="transition hover:text-white">
+                  Projetos
+                </Link>
+                <Link href="/jornada" className="transition hover:text-white">
+                  Jornada
+                </Link>
+                <Link href="/sobre" className="transition hover:text-white">
+                  Sobre
+                </Link>
+              </div>
+            ) : (
+              <ul className="mt-4 grid gap-3 text-sm text-slate-400">
                 <li>
                   <a
-                    href={emailHref}
-                    className="inline-flex items-center gap-2 transition hover:text-white"
-                  >
-                    <Mail className="h-4 w-4" />
-                    {site.contactEmail}
-                  </a>
-                </li>
-              ) : null}
-              {site.whatsappUrl ? (
-                <li>
-                  <a
-                    href={site.whatsappUrl}
+                    href={site.githubProfileUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 transition hover:text-white"
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    WhatsApp
+                    <GitBranch className="h-4 w-4" />
+                    GitHub
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </li>
-              ) : null}
-            </ul>
+                {emailHref ? (
+                  <li>
+                    <a
+                      href={emailHref}
+                      className="inline-flex items-center gap-2 transition hover:text-white"
+                    >
+                      <Mail className="h-4 w-4" />
+                      {site.contactEmail}
+                    </a>
+                  </li>
+                ) : null}
+                {site.whatsappUrl ? (
+                  <li>
+                    <a
+                      href={site.whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 transition hover:text-white"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      WhatsApp
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </li>
+                ) : null}
+              </ul>
+            )}
           </div>
         </div>
 
@@ -102,32 +121,48 @@ export function SiteFooter() {
             {year} {site.shortName}. Construído com Next.js, TypeScript e Tailwind CSS.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={site.githubProfileUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 transition hover:text-white"
-            >
-              <GitBranch className="h-4 w-4" />
-              GitHub
-            </a>
-            {emailHref ? (
-              <a href={emailHref} className="inline-flex items-center gap-2 transition hover:text-white">
-                <Mail className="h-4 w-4" />
-                E-mail
-              </a>
-            ) : null}
-            {site.whatsappUrl ? (
-              <a
-                href={site.whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 transition hover:text-white"
-              >
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp
-              </a>
-            ) : null}
+            {isCleanVersion ? (
+              <>
+                <Link href="/projetos" className="inline-flex items-center gap-2 transition hover:text-white">
+                  Projetos
+                </Link>
+                <Link href="/jornada" className="inline-flex items-center gap-2 transition hover:text-white">
+                  Jornada
+                </Link>
+                <Link href="/sobre" className="inline-flex items-center gap-2 transition hover:text-white">
+                  Sobre
+                </Link>
+              </>
+            ) : (
+              <>
+                <a
+                  href={site.githubProfileUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 transition hover:text-white"
+                >
+                  <GitBranch className="h-4 w-4" />
+                  GitHub
+                </a>
+                {emailHref ? (
+                  <a href={emailHref} className="inline-flex items-center gap-2 transition hover:text-white">
+                    <Mail className="h-4 w-4" />
+                    E-mail
+                  </a>
+                ) : null}
+                {site.whatsappUrl ? (
+                  <a
+                    href={site.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 transition hover:text-white"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    WhatsApp
+                  </a>
+                ) : null}
+              </>
+            )}
             <a href="#top" className="inline-flex items-center gap-2 transition hover:text-white">
               Voltar ao topo
               <ArrowUpRight className="h-4 w-4" />

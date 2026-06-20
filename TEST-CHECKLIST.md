@@ -22,6 +22,9 @@
   - [ ] `/sobre`
   - [ ] `/contato`
 - [ ] Verificar botões GitHub, Demo e Contato
+- [ ] Validar a versão `full` com `NEXT_PUBLIC_PORTFOLIO_VARIANT=full`
+- [ ] Validar a versão `clean` com `NEXT_PUBLIC_PORTFOLIO_VARIANT=clean`
+- [ ] Conferir que a versão `clean` não exibe WhatsApp, e-mail, GitHub, código ou repositório
 - [ ] Conferir responsividade em desktop, tablet e celular
 - [ ] Revisar metadata, Open Graph e favicon
 

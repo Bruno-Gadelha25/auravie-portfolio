@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BadgeCheck, GitBranch, Sparkles } from "lucide-react";
+import { isCleanVersion } from "@/lib/portfolio";
 import { getProjectScreenshots } from "@/lib/project-media";
 import type { PortfolioProject } from "@/lib/projects";
 import {
@@ -23,8 +24,9 @@ function formatStatusLabel(status: PortfolioProject["status"]) {
 }
 
 export function ProjectCard({ project, compact = false }: ProjectCardProps) {
-  const hasDemo = Boolean(project.demoUrl);
-  const hasCode = Boolean(project.githubUrl);
+  const showExternalLinks = !isCleanVersion;
+  const hasDemo = showExternalLinks && Boolean(project.demoUrl);
+  const hasCode = showExternalLinks && Boolean(project.githubUrl);
   const screenshots = getProjectScreenshots(project.slug);
   const previewScreenshot = screenshots?.desktop;
   const showPreview = project.showPreview !== false;
@@ -140,7 +142,10 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
               <ArrowUpRight className="h-4 w-4" />
             </a>
           ) : (
-            <Link href={project.detailsPath} className={secondaryButton}>
+            <Link
+              href={project.detailsPath}
+              className={project.demoUrl ? primaryButton : secondaryButton}
+            >
               Ver detalhes
               <ArrowRight className="h-4 w-4" />
             </Link>

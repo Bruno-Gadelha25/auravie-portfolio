@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, GitBranch, Mail, MessageCircle } from "lucide-react";
+import { isCleanVersion } from "@/lib/portfolio";
 import { site } from "@/lib/site";
 import { ghostButton, primaryButton, secondaryButton, sectionGlass } from "@/lib/ui";
 
@@ -17,6 +18,56 @@ export function ContactBanner({
   const emailHref = site.contactEmail
     ? `mailto:${site.contactEmail}?subject=${encodeURIComponent("Orçamento via Auravie Portfolio")}`
     : null;
+  const actions = isCleanVersion
+    ? [
+        {
+          type: "link" as const,
+          href: "/projetos",
+          label: "Ver projetos",
+          className: primaryButton,
+        },
+        {
+          type: "link" as const,
+          href: "/sobre",
+          label: "Sobre",
+          className: secondaryButton,
+        },
+        {
+          type: "link" as const,
+          href: "/jornada",
+          label: "Jornada",
+          className: ghostButton,
+        },
+      ]
+    : [
+        {
+          type: "anchor" as const,
+          href: site.whatsappUrl ?? "#",
+          label: "WhatsApp",
+          className: primaryButton,
+          icon: MessageCircle,
+        },
+        {
+          type: "anchor" as const,
+          href: emailHref ?? "#",
+          label: "E-mail",
+          className: secondaryButton,
+          icon: Mail,
+        },
+        {
+          type: "anchor" as const,
+          href: site.githubProfileUrl,
+          label: "GitHub",
+          className: ghostButton,
+          icon: GitBranch,
+        },
+        {
+          type: "link" as const,
+          href: "/projetos",
+          label: "Ver projetos",
+          className: ghostButton,
+        },
+      ];
 
   return (
     <section className={`${sectionGlass} p-6 sm:p-8`}>
@@ -36,26 +87,25 @@ export function ContactBanner({
         </div>
 
         <div className="flex flex-wrap gap-3 lg:justify-end">
-          {site.whatsappUrl ? (
-            <a href={site.whatsappUrl} target="_blank" rel="noreferrer" className={primaryButton}>
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
-            </a>
-          ) : null}
-          {emailHref ? (
-            <a href={emailHref} className={secondaryButton}>
-              <Mail className="h-4 w-4" />
-              E-mail
-            </a>
-          ) : null}
-          <a href={site.githubProfileUrl} target="_blank" rel="noreferrer" className={ghostButton}>
-            <GitBranch className="h-4 w-4" />
-            GitHub
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-          <Link href="/projetos" className={ghostButton}>
-            Ver projetos
-          </Link>
+          {actions.map((action) =>
+            action.type === "link" ? (
+              <Link key={action.label} href={action.href} className={action.className}>
+                {action.label}
+              </Link>
+            ) : (
+              <a
+                key={action.label}
+                href={action.href}
+                target="_blank"
+                rel="noreferrer"
+                className={action.className}
+              >
+                <action.icon className="h-4 w-4" />
+                {action.label}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            ),
+          )}
         </div>
       </div>
     </section>

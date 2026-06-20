@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   BadgeCheck,
   GitBranch,
@@ -12,6 +13,7 @@ import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectScreenshots } from "@/components/project-screenshots";
 import { SectionHeading } from "@/components/section-heading";
+import { isCleanVersion } from "@/lib/portfolio";
 import { getProjectCase } from "@/lib/project-cases";
 import { projects, getProjectBySlug } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -43,10 +45,6 @@ function getPublicationLabel(status: string, deployVercel: boolean) {
   }
 
   return "Sem demo pública confirmada";
-}
-
-function getCodeLabel(hasCode: boolean) {
-  return hasCode ? "Código público disponível" : "Repositório não público";
 }
 
 function SectionTextCard({
@@ -125,10 +123,11 @@ export default async function ProjectDetailPage({
   }
 
   const projectCase = getProjectCase(project);
-  const hasDemo = Boolean(project.demoUrl);
-  const hasCode = Boolean(project.githubUrl);
+  const showExternalLinks = !isCleanVersion;
+  const hasDemo = showExternalLinks && Boolean(project.demoUrl);
+  const hasCode = showExternalLinks && Boolean(project.githubUrl);
   const publicationLabel = getPublicationLabel(project.status, project.deployVercel);
-  const codeLabel = getCodeLabel(hasCode);
+  const codeLabel = hasCode ? "Código público disponível" : "Repositório não público";
 
   return (
     <div className="py-6 sm:py-10">
@@ -187,37 +186,54 @@ export default async function ProjectDetailPage({
               </div>
 
               <div className="flex flex-wrap gap-3">
-                {hasDemo ? (
-                  <a
-                    href={project.demoUrl!}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={primaryButton}
-                  >
-                    Ver site
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                {isCleanVersion ? (
+                  <>
+                    <Link href="/projetos" className={primaryButton}>
+                      Ver projetos
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link href="/sobre" className={ghostButton}>
+                      Sobre
+                    </Link>
+                    <Link href="/contato" className={secondaryButton}>
+                      Falar sobre este projeto
+                    </Link>
+                  </>
                 ) : (
-                  <span className={disabledButton}>{publicationLabel}</span>
-                )}
+                  <>
+                    {hasDemo ? (
+                      <a
+                        href={project.demoUrl!}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={primaryButton}
+                      >
+                        Ver site
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    ) : (
+                      <span className={disabledButton}>{publicationLabel}</span>
+                    )}
 
-                {hasCode ? (
-                  <a
-                    href={project.githubUrl!}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={ghostButton}
-                  >
-                    <GitBranch className="h-4 w-4" />
-                    Código
-                  </a>
-                ) : (
-                  <span className={disabledButton}>{codeLabel}</span>
-                )}
+                    {hasCode ? (
+                      <a
+                        href={project.githubUrl!}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={ghostButton}
+                      >
+                        <GitBranch className="h-4 w-4" />
+                        Código
+                      </a>
+                    ) : (
+                      <span className={disabledButton}>{codeLabel}</span>
+                    )}
 
-                <Link href="/contato" className={secondaryButton}>
-                  Falar sobre este projeto
-                </Link>
+                    <Link href="/contato" className={secondaryButton}>
+                      Falar sobre este projeto
+                    </Link>
+                  </>
+                )}
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
@@ -262,17 +278,31 @@ export default async function ProjectDetailPage({
                     ) : null}
                   </div>
 
-                  <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                        Código
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-white">
-                        {codeLabel}
-                      </p>
+                  {isCleanVersion ? (
+                    <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                          Versão
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-white">
+                          Limpa, sem links externos
+                        </p>
+                      </div>
+                      <Sparkles className="mt-0.5 h-5 w-5 text-cyan-300" />
                     </div>
-                    <GitBranch className="mt-0.5 h-5 w-5 text-cyan-300" />
-                  </div>
+                  ) : (
+                    <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                          Código
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-white">
+                          {codeLabel}
+                        </p>
+                      </div>
+                      <GitBranch className="mt-0.5 h-5 w-5 text-cyan-300" />
+                    </div>
+                  )}
 
                   <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
                     <div>
@@ -400,9 +430,11 @@ export default async function ProjectDetailPage({
                   {publicationLabel}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
-                  {hasCode
-                    ? "Repositório público disponível."
-                    : "Sem repositório público confirmado."}
+                  {isCleanVersion
+                    ? "Versão preparada para apresentação em propostas e plataformas."
+                    : hasCode
+                      ? "Repositório público disponível."
+                      : "Sem repositório público confirmado."}
                 </p>
               </div>
             </div>

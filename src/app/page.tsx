@@ -17,6 +17,7 @@ import { ContactBanner } from "@/components/contact-banner";
 import { Container } from "@/components/container";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
+import { isCleanVersion } from "@/lib/portfolio";
 import { featuredProjects, publishedProjects, projects, uniqueTechnologies } from "@/lib/projects";
 import { site, siteCategories } from "@/lib/site";
 import {
@@ -71,7 +72,7 @@ const homeStats = [
 ];
 
 export default function Home() {
-  const emailHref = site.contactEmail
+  const emailHref = !isCleanVersion && site.contactEmail
     ? `mailto:${site.contactEmail}?subject=${encodeURIComponent("Orçamento via Auravie Portfolio")}`
     : null;
 
@@ -109,29 +110,45 @@ export default function Home() {
                   Ver projetos
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                {site.whatsappUrl ? (
-                  <a
-                    href={site.whatsappUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={ghostButton}
-                  >
-                    WhatsApp
-                  </a>
-                ) : null}
-                {emailHref ? (
-                  <a href={emailHref} className={ghostButton}>
-                    E-mail
-                  </a>
-                ) : null}
-                <a
-                  href={site.githubProfileUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={ghostButton}
-                >
-                  GitHub
-                </a>
+                {isCleanVersion ? (
+                  <>
+                    <Link href="/contato" className={ghostButton}>
+                      Contato
+                    </Link>
+                    <Link href="/sobre" className={ghostButton}>
+                      Sobre
+                    </Link>
+                    <Link href="/jornada" className={ghostButton}>
+                      Jornada
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    {site.whatsappUrl ? (
+                      <a
+                        href={site.whatsappUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={ghostButton}
+                      >
+                        WhatsApp
+                      </a>
+                    ) : null}
+                    {emailHref ? (
+                      <a href={emailHref} className={ghostButton}>
+                        E-mail
+                      </a>
+                    ) : null}
+                    <a
+                      href={site.githubProfileUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={ghostButton}
+                    >
+                      GitHub
+                    </a>
+                  </>
+                )}
               </div>
 
               <div className="grid gap-3 sm:grid-cols-3">
