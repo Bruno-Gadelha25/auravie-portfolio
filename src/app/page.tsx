@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, GitBranch } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
+import { ParticleOrb } from "@/components/particle-orb";
 import { Container } from "@/components/container";
 import {
   aiTimeline,
@@ -132,23 +133,10 @@ export default function Home() {
             </div>
           </div>
 
-          <figure className="hero-rise relative hidden lg:block" style={{ animationDelay: "0.35s" }}>
-            <div className="relative aspect-[4/5] overflow-hidden border border-line bg-panel">
-              <Image
-                src="/projects/nexo/interface-hud.png"
-                alt="Interface atual do Nexo rodando no PC do Bruno"
-                fill
-                priority
-                sizes="420px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/80 to-transparent p-5 pt-16">
-                <p className="text-sm text-muted">Agora, no meu PC</p>
-                <p className="font-display text-3xl text-cyan">Nexo online</p>
-              </div>
-            </div>
-            <div className="absolute -left-4 -top-4 -z-10 h-full w-full border-2 border-red" aria-hidden />
-          </figure>
+          <div className="hero-rise relative" style={{ animationDelay: "0.35s" }}>
+            <div className="absolute -left-3 -top-3 -z-10 hidden h-[calc(100%-3.5rem)] w-full border-2 border-red sm:block" aria-hidden />
+            <ParticleOrb />
+          </div>
         </Container>
 
         <div className="border-t border-line bg-panel/60">
