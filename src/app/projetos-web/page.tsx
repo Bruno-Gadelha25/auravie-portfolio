@@ -26,14 +26,14 @@ export default function ProjectsWebPage() {
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
+                <span className="rounded-sm border border-line bg-cyan/10 px-4 py-2 text-xs font-semibold text-cyan">
                   Projetos Web
                 </span>
               </div>
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <h1 className="max-w-3xl text-4xl text-bone font-display sm:text-5xl">
                 Aplicações com mais densidade de produto e experiência.
               </h1>
-              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              <p className="max-w-2xl text-base leading-7 text-muted sm:text-lg">
                 Aqui entram os projetos web com maior camada de interface, estado e
                 organização de fluxo.
               </p>
@@ -42,7 +42,7 @@ export default function ProjectsWebPage() {
                   Ver todos os projetos
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="/contato" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10">
+                <Link href="/contato" className="rounded-sm border border-line bg-panel-2 px-5 py-3 text-sm font-semibold text-bone transition hover:bg-panel-2">
                   Falar sobre um projeto
                 </Link>
               </div>
@@ -50,12 +50,12 @@ export default function ProjectsWebPage() {
 
             <div className={`${softCard} space-y-4 p-5`}>
               <div className="flex items-center gap-3">
-                <ShoppingBag className="h-5 w-5 text-cyan-200" />
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-200">
+                <ShoppingBag className="h-5 w-5 text-cyan" />
+                <p className="text-sm font-semibold text-bone">
                   Produto e interação
                 </p>
               </div>
-              <p className="text-sm leading-6 text-slate-300">
+              <p className="text-sm leading-6 text-muted">
                 Void Store e Void Sudoku mostram que a base vai além de páginas:
                 também inclui lógica de produto, fluxo de usuário e experiência
                 funcional.
@@ -64,7 +64,7 @@ export default function ProjectsWebPage() {
                 {["checkout", "catálogo", "dashboard", "jogo interativo"].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300"
+                    className="rounded-sm border border-line bg-panel-2 px-3 py-1 text-xs font-medium text-muted"
                   >
                     {tag}
                   </span>
@@ -90,12 +90,12 @@ export default function ProjectsWebPage() {
 
         <section className={`${sectionGlass} p-6 sm:p-8`}>
           <div className="flex items-start gap-4">
-            <Gamepad2 className="mt-1 h-5 w-5 shrink-0 text-cyan-200" />
+            <Gamepad2 className="mt-1 h-5 w-5 shrink-0 text-cyan" />
             <div className="space-y-3">
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-bone">
                 Direção técnica
               </h2>
-              <p className="max-w-3xl text-sm leading-6 text-slate-300">
+              <p className="max-w-3xl text-sm leading-6 text-muted">
                 O objetivo desses projetos é equilibrar interface, arquitetura e
                 apresentação. Eles servem tanto como demonstração de front-end quanto
                 como base para produtos maiores.

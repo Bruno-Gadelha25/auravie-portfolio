@@ -45,7 +45,7 @@ export default function JornadaPage() {
               {journeyParagraphs.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="text-sm leading-7 text-slate-300 sm:text-base"
+                  className="text-sm leading-7 text-muted sm:text-base"
                 >
                   {paragraph}
                 </p>
@@ -53,10 +53,10 @@ export default function JornadaPage() {
             </div>
 
             <div className={`${softCard} p-5`}>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+              <p className="text-sm font-semibold text-cyan">
                 Evolução
               </p>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 text-sm leading-6 text-muted">
                 A jornada mostra a passagem de um estudo pontual para uma estrutura
                 mais ampla, capaz de conectar servidor, automações, IA local e
                 organização de conhecimento.
@@ -73,19 +73,19 @@ export default function JornadaPage() {
           />
 
           <div className="relative">
-            <div className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-cyan-300/40 via-white/10 to-transparent lg:block" />
+            <div className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-red/60 via-line to-transparent lg:block" />
             <div className="grid gap-4">
               {timeline.map((item, index) => (
                 <div
                   key={item}
                   className={`${softCard} relative flex gap-4 p-5 lg:pl-6`}
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/10 text-sm font-semibold text-cyan-100">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-line bg-cyan/10 text-sm font-semibold text-cyan">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <div>
-                    <p className="text-base font-semibold text-white">{item}</p>
-                    <p className="mt-1 text-sm leading-6 text-slate-300">
+                    <p className="text-base font-semibold text-bone">{item}</p>
+                    <p className="mt-1 text-sm leading-6 text-muted">
                       Marco consolidado na construção do portfólio e da base técnica.
                     </p>
                   </div>

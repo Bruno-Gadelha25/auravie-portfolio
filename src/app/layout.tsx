@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Anton, Barlow, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Anton({
+  variable: "--font-display",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const body = Barlow({
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -23,7 +30,12 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "Auravie Portfolio",
+    "Bruno Gadelha",
+    "DBA em formação",
+    "banco de dados",
+    "PostgreSQL",
+    "MySQL",
+    "IA local",
     "portfólio profissional",
     "Next.js",
     "TypeScript",
@@ -70,24 +82,10 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${display.variable} ${body.variable} ${mono.variable} h-full scroll-smooth antialiased`}
     >
-  <body className="min-h-screen bg-[#02040d] text-slate-100">
-      <div id="top" className="relative flex min-h-screen flex-col overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-            <div
-              className="animate-float absolute left-[-12%] top-[-8%] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl"
-              style={{ animationDuration: "16s" }}
-            />
-            <div
-              className="animate-float absolute right-[-10%] top-[18%] h-[32rem] w-[32rem] rounded-full bg-emerald-400/10 blur-3xl"
-              style={{ animationDuration: "18s" }}
-            />
-            <div
-              className="animate-float absolute bottom-[-12%] left-[18%] h-[24rem] w-[24rem] rounded-full bg-sky-400/10 blur-3xl"
-              style={{ animationDuration: "20s" }}
-            />
-          </div>
+  <body className="min-h-screen bg-ink text-bone">
+        <div id="top" className="relative z-10 flex min-h-screen flex-col overflow-x-clip">
           <SiteHeader />
           <main className="relative z-10 flex-1">{children}</main>
           <SiteFooter />

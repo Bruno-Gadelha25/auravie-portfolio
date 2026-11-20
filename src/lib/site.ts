@@ -1,10 +1,14 @@
 import { publicSiteUrl } from "@/lib/portfolio";
 
 export const site = {
-  name: "Auravie Portfolio",
-  shortName: "Auravie",
+  name: "Bruno Gadelha",
+  shortName: "Bruno Gadelha",
+  role: "DBA em formação",
+  tagline: "Menos promessa, mais CSV.",
+  // Preencher com o link do perfil do LinkedIn para o botão aparecer no site.
+  linkedinUrl: "",
   description:
-    "Portfólio profissional para reunir sites, landing pages, projetos web, automações, experimentos com IA e infraestrutura local de estudos.",
+    "Bruno Gadelha, DBA em formação: banco de dados, Linux, homelab e IA local rodando em duas placas de vídeo em casa. Sites, dados e automações com prova.",
   githubProfileUrl: "https://github.com/Bruno-Gadelha25",
   contactEmail: "brunogadelha2005@gmail.com",
   whatsappUrl:
@@ -22,12 +26,8 @@ export type SiteCategory = {
 };
 
 export const mainNav = [
-  { label: "Home", href: "/" },
+  { label: "Julinha + Nexo", href: "/#julinha-nexo" },
   { label: "Projetos", href: "/projetos" },
-  { label: "Sites e Landing Pages", href: "/sites-e-landing-pages" },
-  { label: "Projetos Web", href: "/projetos-web" },
-  { label: "Experimentos com IA", href: "/experimentos-com-ia" },
-  { label: "Infraestrutura e Servidores", href: "/infraestrutura-e-servidores" },
   { label: "Jornada", href: "/jornada" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
@@ -65,6 +65,14 @@ export const siteCategories: SiteCategory[] = [
     description:
       "Assistentes, pesquisa, memória, ingestão de conhecimento e serviços locais de IA.",
     accent: "violet",
+  },
+  {
+    label: "Banco de Dados",
+    slug: "banco-de-dados",
+    route: "/projetos?category=Banco%20de%20Dados",
+    description:
+      "Modelagem, SQL, MySQL e PostgreSQL: o que eu estudo no curso, aplicado em projetos.",
+    accent: "red",
   },
   {
     label: "Dashboards e Dados",

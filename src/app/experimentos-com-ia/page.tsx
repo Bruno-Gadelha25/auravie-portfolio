@@ -46,14 +46,14 @@ export default function ExperimentosComIaPage() {
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <span className="rounded-full border border-violet-300/20 bg-violet-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-violet-100">
+                <span className="rounded-sm border border-line bg-orange/10 px-4 py-2 text-xs font-semibold text-orange">
                   Experimentos com IA
                 </span>
               </div>
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <h1 className="max-w-3xl text-4xl text-bone font-display sm:text-5xl">
                 Assistentes, memória e automações com foco operacional.
               </h1>
-              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              <p className="max-w-2xl text-base leading-7 text-muted sm:text-lg">
                 A frente de IA do portfólio reúne a camada de assistente, serviços de
                 pesquisa e componentes que ajudam a organizar informação e apoiar
                 processos internos.
@@ -68,12 +68,12 @@ export default function ExperimentosComIaPage() {
 
             <div className={`${softCard} space-y-4 p-5`}>
               <div className="flex items-center gap-3">
-                <BrainCircuit className="h-5 w-5 text-violet-200" />
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-200">
+                <BrainCircuit className="h-5 w-5 text-orange" />
+                <p className="text-sm font-semibold text-bone">
                   Base em evolução
                 </p>
               </div>
-              <p className="text-sm leading-6 text-slate-300">
+              <p className="text-sm leading-6 text-muted">
                 A Jullinha.ai representa a linha mais ambiciosa do ecossistema:
                 conhecimento, relatórios, automação e integração com ferramentas
                 locais.
@@ -106,14 +106,14 @@ export default function ExperimentosComIaPage() {
               return (
                 <div key={module.title} className={`${softCard} p-5`}>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-violet-100">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-md border border-line bg-panel-2 text-orange">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <h3 className="text-base font-semibold text-white">
+                    <h3 className="text-base font-semibold text-bone">
                       {module.title}
                     </h3>
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                  <p className="mt-3 text-sm leading-6 text-muted">
                     {module.text}
                   </p>
                 </div>

@@ -25,7 +25,7 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.55fr)_minmax(260px,0.75fr)]">
         <figure className={`${softCard} overflow-hidden`}>
-          <div className="relative aspect-[16/10] overflow-hidden bg-slate-950/70">
+          <div className="relative aspect-[16/10] overflow-hidden bg-ink/70">
             <Image
               src={screenshots.desktop.src}
               alt={screenshots.desktop.alt}
@@ -35,13 +35,13 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
               className="object-cover object-top"
             />
           </div>
-          <figcaption className="border-t border-white/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.24em] text-slate-400">
+          <figcaption className="border-t border-line px-4 py-3 text-xs font-medium text-muted">
             Desktop
           </figcaption>
         </figure>
 
         <figure className={`${softCard} overflow-hidden`}>
-          <div className="relative aspect-[9/16] overflow-hidden bg-slate-950/70 lg:max-h-[680px]">
+          <div className="relative aspect-[9/16] overflow-hidden bg-ink/70 lg:max-h-[680px]">
             <Image
               src={screenshots.mobile.src}
               alt={screenshots.mobile.alt}
@@ -50,13 +50,13 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
               className="object-cover object-top"
             />
           </div>
-          <figcaption className="border-t border-white/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.24em] text-slate-400">
+          <figcaption className="border-t border-line px-4 py-3 text-xs font-medium text-muted">
             Mobile
           </figcaption>
         </figure>
       </div>
 
-      <p className="mt-4 text-xs leading-6 text-slate-400">
+      <p className="mt-4 text-xs leading-6 text-muted">
         Capturas em formato leve, pensadas para evidenciar a experiência visual sem pesar o carregamento da página.
       </p>
     </section>
