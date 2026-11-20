@@ -7,7 +7,7 @@ import { sectionGlass, softCard } from "@/lib/ui";
 export const metadata: Metadata = {
   title: "Jornada",
   description:
-    "A trajetória técnica do servidor local ao ecossistema Jullinha e ao portfólio profissional.",
+    "A trajetória técnica do servidor local à Julinha + Nexo e ao portfólio profissional.",
 };
 
 const timeline = [
