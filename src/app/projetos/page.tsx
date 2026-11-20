@@ -39,23 +39,23 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
               description="Aqui estão os projetos escolhidos para o portfólio, com destaque para os que já podem ser apresentados publicamente."
             >
               <div className="flex flex-wrap gap-3 pt-2">
-                <span className={`${softCard} px-4 py-2 text-sm text-slate-200`}>
+                <span className={`${softCard} px-4 py-2 text-sm text-bone`}>
                   {projects.length} projetos
                 </span>
-                <span className={`${softCard} px-4 py-2 text-sm text-slate-200`}>
+                <span className={`${softCard} px-4 py-2 text-sm text-bone`}>
                   {publishedProjects.length} publicados na Vercel
                 </span>
-                <span className={`${softCard} px-4 py-2 text-sm text-slate-200`}>
+                <span className={`${softCard} px-4 py-2 text-sm text-bone`}>
                   {siteCategories.length} categorias de navegação
                 </span>
               </div>
             </SectionHeading>
 
             <div className={`${softCard} p-5`}>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+              <p className="text-sm font-semibold text-cyan">
                 Organização
               </p>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 text-sm leading-6 text-muted">
                 {site.shortName} concentra as entregas mais fortes em uma estrutura
                 pensada para leitura rápida, comparação de projetos e apresentação
                 profissional.

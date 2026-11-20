@@ -43,8 +43,8 @@ export default function SobrePage() {
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {focusCards.map((card) => (
               <div key={card.title} className={`${softCard} p-5`}>
-                <h3 className="text-base font-semibold text-white">{card.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">{card.text}</p>
+                <h3 className="text-base font-semibold text-bone">{card.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{card.text}</p>
               </div>
             ))}
           </div>
@@ -53,25 +53,25 @@ export default function SobrePage() {
         <section className={`${sectionGlass} p-6 sm:p-8`}>
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold tracking-tight text-white">
+              <h2 className="text-2xl text-bone font-display">
                 Meu foco de trabalho
               </h2>
-              <p className="text-sm leading-7 text-slate-300 sm:text-base">
+              <p className="text-sm leading-7 text-muted sm:text-base">
                 Eu gosto de transformar ideia em entrega visível. Isso significa
                 organizar o conteúdo, construir uma interface limpa e garantir que a
                 base técnica seja suficiente para manter o projeto evoluindo.
               </p>
-              <p className="text-sm leading-7 text-slate-300 sm:text-base">
+              <p className="text-sm leading-7 text-muted sm:text-base">
                 O resultado desejado é sempre o mesmo: uma solução simples de usar,
                 com aparência profissional e espaço para crescer com segurança.
               </p>
             </div>
 
             <div className={`${softCard} p-5`}>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+              <p className="text-sm font-semibold text-cyan">
                 Posicionamento
               </p>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 text-sm leading-6 text-muted">
                 Portfólio focado em clientes e recrutadores que valorizam clareza,
                 funcionalidade e uma apresentação técnica consistente.
               </p>

@@ -1,5 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { projects, publishedProjects, uniqueTechnologies } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export const size = {
@@ -8,8 +9,14 @@ export const size = {
 };
 
 export const contentType = "image/png";
+export const alt = `${site.name}, ${site.role}`;
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const anton = await readFile(join(process.cwd(), "src/app/fonts/Anton-Regular.ttf"));
+
+  const grid =
+    "linear-gradient(rgba(241,239,233,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(241,239,233,0.07) 1px, transparent 1px)";
+
   return new ImageResponse(
     (
       <div
@@ -19,75 +26,44 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: 64,
-          color: "#f8fafc",
-          background:
-            "radial-gradient(circle at top left, rgba(34,211,238,0.24), transparent 34%), radial-gradient(circle at right, rgba(16,185,129,0.22), transparent 26%), linear-gradient(180deg, #02040d 0%, #050816 100%)",
+          padding: "56px 64px",
+          backgroundColor: "#08090c",
+          backgroundImage: grid,
+          backgroundSize: "48px 48px",
+          color: "#f1efe9",
+          fontFamily: "monospace",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div
-            style={{
-              width: 84,
-              height: 84,
-              borderRadius: 28,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.14)",
-              boxShadow: "0 0 60px rgba(34,211,238,0.24)",
-              fontSize: 30,
-              fontWeight: 700,
-            }}
-          >
-            AV
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 24 }}>
+          <div style={{ display: "flex" }}>
+            <span style={{ color: "#3cd2dc" }}>bruno@b2026:~$</span>
+            <span style={{ marginLeft: 12 }}>ollama run qwen3</span>
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontSize: 18, letterSpacing: "0.24em", textTransform: "uppercase", color: "#a5f3fc" }}>
-              {site.shortName}
-            </span>
-            <span style={{ fontSize: 20, color: "#94a3b8" }}>
-              Portfólio profissional
-            </span>
-          </div>
+          <div style={{ display: "flex", color: "#ff7ac8" }}>&gt;&gt;&gt; Oi, Bruno. Julinha online. Nexo pronto.</div>
         </div>
 
-        <div style={{ display: "flex", maxWidth: 920, flexDirection: "column", gap: 20 }}>
-          <h1 style={{ fontSize: 72, lineHeight: 1.02, margin: 0, fontWeight: 700 }}>
-            Sites, IA e infraestrutura com apresentação profissional.
-          </h1>
-          <p style={{ fontSize: 28, lineHeight: 1.4, color: "#cbd5e1", margin: 0 }}>
-            {site.description}
-          </p>
-        </div>
-
-        <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
-          {[
-            `${projects.length} projetos`,
-            `${publishedProjects.length} publicados na Vercel`,
-            `${uniqueTechnologies.length} tecnologias`,
-          ].map((item) => (
-            <div
-              key={item}
-              style={{
-                padding: "14px 20px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                fontSize: 24,
-                fontWeight: 600,
-              }}
-            >
-              {item}
+        <div style={{ display: "flex", flexDirection: "column", fontFamily: "Anton" }}>
+          <div style={{ fontSize: 150, lineHeight: 0.9 }}>Bruno Gadelha</div>
+          <div style={{ display: "flex", marginTop: 18 }}>
+            <div style={{ backgroundColor: "#ee1c25", color: "#fff", fontSize: 64, padding: "6px 18px 2px" }}>
+              DBA EM FORMAÇÃO
             </div>
-          ))}
+          </div>
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div style={{ display: "flex", fontSize: 26, color: "#9a9ca3" }}>
+            SQL · PostgreSQL · MySQL · Linux · IA local em 2 GPUs
+          </div>
+          <div style={{ display: "flex", fontFamily: "Anton", fontSize: 40, color: "#ffa028" }}>
+            {site.tagline}
+          </div>
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [{ name: "Anton", data: anton, style: "normal", weight: 400 }],
     },
   );
 }
-

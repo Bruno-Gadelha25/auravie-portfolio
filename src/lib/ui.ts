@@ -1,52 +1,47 @@
 export const shellCard =
-  "rounded-3xl border border-white/10 bg-white/[0.05] shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl";
+  "rounded-md border border-line bg-panel/90 backdrop-blur-sm";
 
-export const softCard = "rounded-2xl border border-white/10 bg-white/[0.04]";
+export const softCard = "rounded-md border border-line bg-panel-2/70";
 
 export const sectionGlass =
-  "rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-xl";
+  "rounded-lg border border-line bg-panel/85 backdrop-blur-sm";
 
-export const primaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-white/70 bg-gradient-to-r from-cyan-100 via-white to-emerald-100 px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_10px_30px_rgba(34,211,238,0.15)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(34,211,238,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+const buttonBase =
+  "inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-semibold tracking-wide transition duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
-export const secondaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-400/10 px-5 py-3 text-sm font-semibold text-cyan-50 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+export const primaryButton = `${buttonBase} bg-red text-white shadow-[4px_4px_0_0_rgba(241,239,233,0.9)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(241,239,233,0.9)]`;
 
-export const ghostButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-3 text-sm font-semibold text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+export const secondaryButton = `${buttonBase} border border-bone/80 bg-transparent text-bone hover:bg-bone hover:text-ink`;
 
-export const disabledButton =
-  "inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-500";
+export const ghostButton = `${buttonBase} border border-line bg-transparent text-bone/85 hover:border-bone/40 hover:text-bone`;
+
+export const disabledButton = `${buttonBase} cursor-not-allowed border border-line bg-panel-2 text-muted`;
 
 export function navLinkClass(active: boolean) {
   return [
-    "rounded-full px-3 py-2 text-sm font-medium transition",
+    "relative px-1 py-2 text-sm font-medium transition",
     active
-      ? "bg-white/10 text-white"
-      : "text-slate-300 hover:bg-white/5 hover:text-white",
+      ? "text-bone after:absolute after:inset-x-1 after:-bottom-0.5 after:h-[3px] after:bg-red"
+      : "text-muted hover:text-bone",
   ].join(" ");
 }
 
 export function statusClass(status: string) {
   if (status === "pronto") {
-    return "border-emerald-400/25 bg-emerald-400/10 text-emerald-200";
+    return "border-cyan/30 bg-cyan/10 text-cyan";
   }
 
   if (status === "em andamento") {
-    return "border-amber-400/25 bg-amber-400/10 text-amber-200";
+    return "border-orange/30 bg-orange/10 text-orange";
   }
 
-  return "border-rose-400/25 bg-rose-400/10 text-rose-200";
+  return "border-red/30 bg-red/10 text-red";
 }
 
 export function potentialClass(potential: string) {
   if (potential === "alto") {
-    return "border-cyan-400/25 bg-cyan-400/10 text-cyan-100";
+    return "border-bone/20 bg-bone/5 text-bone";
   }
 
-  if (potential === "médio") {
-    return "border-sky-400/25 bg-sky-400/10 text-sky-100";
-  }
-
-  return "border-slate-400/25 bg-slate-400/10 text-slate-200";
+  return "border-line bg-panel-2 text-muted";
 }

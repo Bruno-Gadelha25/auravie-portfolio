@@ -56,10 +56,10 @@ function SectionTextCard({
 }) {
   return (
     <article className={`${softCard} p-5 sm:p-6`}>
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+      <p className="text-xs font-semibold text-cyan">
         {title}
       </p>
-      <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
+      <p className="mt-3 text-sm leading-7 text-muted">{text}</p>
     </article>
   );
 }
@@ -142,31 +142,31 @@ export default async function ProjectDetailPage({
               <div className="flex flex-wrap items-center gap-3">
                 <Link
                   href="/projetos"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-sm border border-line bg-panel-2 px-4 py-2 text-sm font-medium text-bone transition hover:bg-panel-2"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   Voltar aos projetos
                 </Link>
 
-                <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-slate-200">
+                <span className="rounded-sm border border-line bg-panel-2/70 px-4 py-2 text-sm font-medium text-bone">
                   {project.category}
                 </span>
 
-                <span className={`rounded-full border px-4 py-2 text-sm font-medium ${statusClass(project.status)}`}>
+                <span className={`rounded-sm border px-4 py-2 text-sm font-medium ${statusClass(project.status)}`}>
                   {project.status}
                 </span>
 
-                <span className={`rounded-full border px-4 py-2 text-sm font-medium ${potentialClass(project.portfolioPotential)}`}>
+                <span className={`rounded-sm border px-4 py-2 text-sm font-medium ${potentialClass(project.portfolioPotential)}`}>
                   Potencial {project.portfolioPotential}
                 </span>
 
                 {project.deployVercel ? (
                   <>
-                    <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-100">
+                    <span className="inline-flex items-center gap-2 rounded-sm border border-line bg-cyan/10 px-4 py-2 text-sm font-medium text-cyan">
                       <BadgeCheck className="h-4 w-4" />
                       Publicado
                     </span>
-                    <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-100">
+                    <span className="rounded-sm border border-line bg-cyan/10 px-4 py-2 text-sm font-medium text-cyan">
                       Vercel
                     </span>
                   </>
@@ -174,13 +174,13 @@ export default async function ProjectDetailPage({
               </div>
 
               <div className="space-y-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-200/75">
+                <p className="text-xs font-semibold text-cyan">
                   Case profissional
                 </p>
-                <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                <h1 className="max-w-3xl text-4xl text-bone font-display sm:text-5xl">
                   {projectCase.title}
                 </h1>
-                <p className="max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
+                <p className="max-w-3xl text-base leading-7 text-muted sm:text-lg">
                   {projectCase.description}
                 </p>
               </div>
@@ -238,19 +238,19 @@ export default async function ProjectDetailPage({
 
               <div className="grid gap-3 sm:grid-cols-2">
                 <article className={`${softCard} p-5`}>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                  <p className="text-xs font-semibold text-cyan">
                     Valor para o cliente
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                  <p className="mt-3 text-sm leading-7 text-muted">
                     {projectCase.commercialValue}
                   </p>
                 </article>
 
                 <article className={`${softCard} p-5`}>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                  <p className="text-xs font-semibold text-cyan">
                     Status atual
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                  <p className="mt-3 text-sm leading-7 text-muted">
                     {projectCase.statusNote}
                   </p>
                 </article>
@@ -259,74 +259,74 @@ export default async function ProjectDetailPage({
 
             <div className="space-y-4">
               <div className={`${shellCard} space-y-4 p-5`}>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                <p className="text-sm font-semibold text-cyan">
                   Visão geral
                 </p>
 
                 <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                  <div className="flex items-start justify-between gap-4 rounded-md border border-line bg-panel-2/70 px-4 py-4">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                      <p className="text-xs font-semibold text-muted">
                         Publicação
                       </p>
-                      <p className="mt-1 text-sm font-medium text-white">
+                      <p className="mt-1 text-sm font-medium text-bone">
                         {publicationLabel}
                       </p>
                     </div>
                     {project.deployVercel ? (
-                      <BadgeCheck className="mt-0.5 h-5 w-5 text-emerald-300" />
+                      <BadgeCheck className="mt-0.5 h-5 w-5 text-cyan" />
                     ) : null}
                   </div>
 
                   {isCleanVersion ? (
-                    <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                    <div className="flex items-start justify-between gap-4 rounded-md border border-line bg-panel-2/70 px-4 py-4">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        <p className="text-xs font-semibold text-muted">
                           Versão
                         </p>
-                        <p className="mt-1 text-sm font-medium text-white">
+                        <p className="mt-1 text-sm font-medium text-bone">
                           Limpa, sem links externos
                         </p>
                       </div>
-                      <Sparkles className="mt-0.5 h-5 w-5 text-cyan-300" />
+                      <Sparkles className="mt-0.5 h-5 w-5 text-cyan" />
                     </div>
                   ) : (
-                    <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                    <div className="flex items-start justify-between gap-4 rounded-md border border-line bg-panel-2/70 px-4 py-4">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                        <p className="text-xs font-semibold text-muted">
                           Código
                         </p>
-                        <p className="mt-1 text-sm font-medium text-white">
+                        <p className="mt-1 text-sm font-medium text-bone">
                           {codeLabel}
                         </p>
                       </div>
-                      <GitBranch className="mt-0.5 h-5 w-5 text-cyan-300" />
+                      <GitBranch className="mt-0.5 h-5 w-5 text-cyan" />
                     </div>
                   )}
 
-                  <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
+                  <div className="flex items-start justify-between gap-4 rounded-md border border-line bg-panel-2/70 px-4 py-4">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                      <p className="text-xs font-semibold text-muted">
                         Tipo
                       </p>
-                      <p className="mt-1 text-sm font-medium text-white">
+                      <p className="mt-1 text-sm font-medium text-bone">
                         {project.type}
                       </p>
                     </div>
-                    <Sparkles className="mt-0.5 h-5 w-5 text-cyan-300" />
+                    <Sparkles className="mt-0.5 h-5 w-5 text-cyan" />
                   </div>
                 </div>
               </div>
 
               <div className={`${shellCard} space-y-4 p-5`}>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                <p className="text-sm font-semibold text-cyan">
                   Tecnologias usadas
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((technology) => (
                     <span
                       key={technology}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300"
+                      className="rounded-sm border border-line bg-panel-2/70 px-3 py-1 text-xs font-medium text-muted"
                     >
                       {technology}
                     </span>
@@ -356,7 +356,7 @@ export default async function ProjectDetailPage({
               {project.technologies.map((technology) => (
                 <span
                   key={technology}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300"
+                  className="rounded-sm border border-line bg-panel-2/70 px-3 py-1 text-xs font-medium text-muted"
                 >
                   {technology}
                 </span>
@@ -374,7 +374,7 @@ export default async function ProjectDetailPage({
               {projectCase.technicalHighlights.map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                  className="rounded-md border border-line bg-panel-2/70 px-4 py-4 text-sm leading-6 text-muted"
                 >
                   {item}
                 </div>
@@ -393,7 +393,7 @@ export default async function ProjectDetailPage({
             {projectCase.demonstrates.map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                className="rounded-md border border-line bg-panel-2/70 px-4 py-4 text-sm leading-6 text-muted"
               >
                 {item}
               </div>
@@ -408,28 +408,28 @@ export default async function ProjectDetailPage({
               title="Como este trabalho se posiciona para clientes"
               description="A proposta é mostrar de forma objetiva o tipo de valor que a entrega gera na prática."
             />
-            <p className="mt-6 text-sm leading-7 text-slate-300 sm:text-base">
+            <p className="mt-6 text-sm leading-7 text-muted sm:text-base">
               {projectCase.commercialValue}
             </p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className={`${softCard} p-5`}>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                <p className="text-xs font-semibold text-cyan">
                   Estado atual
                 </p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
+                <p className="mt-3 text-sm leading-7 text-muted">
                   {projectCase.statusNote}
                 </p>
               </div>
 
               <div className={`${softCard} p-5`}>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">
+                <p className="text-xs font-semibold text-cyan">
                   Publicação
                 </p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
+                <p className="mt-3 text-sm leading-7 text-muted">
                   {publicationLabel}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-400">
+                <p className="mt-2 text-sm leading-6 text-muted">
                   {isCleanVersion
                     ? "Versão preparada para apresentação em propostas e plataformas."
                     : hasCode
@@ -451,7 +451,7 @@ export default async function ProjectDetailPage({
                 {project.improvements.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                    className="rounded-md border border-line bg-panel-2/70 px-4 py-4 text-sm leading-6 text-muted"
                   >
                     {item}
                   </div>
@@ -469,7 +469,7 @@ export default async function ProjectDetailPage({
                 {project.risks.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300"
+                    className="rounded-md border border-line bg-panel-2/70 px-4 py-4 text-sm leading-6 text-muted"
                   >
                     {item}
                   </div>
