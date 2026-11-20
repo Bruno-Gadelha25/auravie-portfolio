@@ -18,9 +18,13 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
   return (
     <section className={`${sectionGlass} p-6 sm:p-8`}>
       <SectionHeading
-        eyebrow="Screenshots reais"
-        title="Visual capturado da interface real"
-        description="As imagens abaixo foram capturadas diretamente da interface do projeto em desktop e mobile para apresentar melhor o resultado final."
+        eyebrow="Capturas reais"
+        title="Como está hoje"
+        description={
+          project.status === "em andamento"
+            ? "Capturas da interface atual, no computador e no celular. O projeto está em fase de teste e ainda muda bastante."
+            : "Capturas da interface do projeto, no computador e no celular."
+        }
       />
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.55fr)_minmax(260px,0.75fr)]">

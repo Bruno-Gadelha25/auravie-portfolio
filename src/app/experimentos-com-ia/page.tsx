@@ -60,7 +60,7 @@ export default function ExperimentosComIaPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#jullinha" className={primaryButton}>
-                  Ver Jullinha.ai
+                  Ver Julinha + Nexo
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -74,7 +74,7 @@ export default function ExperimentosComIaPage() {
                 </p>
               </div>
               <p className="text-sm leading-6 text-muted">
-                A Jullinha.ai representa a linha mais ambiciosa do ecossistema:
+                A Julinha + Nexo é o projeto mais ambicioso do ecossistema:
                 conhecimento, relatórios, automação e integração com ferramentas
                 locais.
               </p>
@@ -85,7 +85,7 @@ export default function ExperimentosComIaPage() {
         <section id="jullinha" className="space-y-8">
           <SectionHeading
             eyebrow="Projeto principal"
-            title="Jullinha.ai"
+            title="Julinha + Nexo"
             description="Assistente inteligente em desenvolvimento, criada para organização de conhecimento, automações, relatórios, integração com Obsidian e apoio operacional para pequenos negócios."
           />
 

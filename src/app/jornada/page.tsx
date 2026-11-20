@@ -16,7 +16,7 @@ const timeline = [
   "Instalação do Ubuntu Server",
   "Aprendizado com redes e SSH",
   "Testes com IA local",
-  "Criação da Jullinha.ai",
+  "Nascimento da Julinha e do Nexo",
   "Organização do portfólio freelancer",
 ];
 
@@ -25,7 +25,7 @@ const journeyParagraphs = [
   "O que parecia ser apenas um teste virou um projeto real de aprendizado. A partir de hardware reaproveitado, comecei a montar um ambiente próprio para estudar Linux, redes, SSH, armazenamento, acesso remoto, automações e aplicações com IA.",
   "No início, muita coisa foi feita na tentativa e erro. Instalei Ubuntu Server sem interface gráfica, aprendi a lidar com terminal, configurações de rede, IP, DHCP, acesso remoto e organização de arquivos. Cada erro virou uma etapa de aprendizado, e cada problema resolvido deixou o projeto mais sólido.",
   "Com o tempo, o servidor deixou de ser apenas uma máquina reaproveitada e se tornou um homelab: um ambiente local de testes, estudos e desenvolvimento. Nele, comecei a experimentar ferramentas, modelos locais de IA, organização de conhecimento no Obsidian e ideias de automação.",
-  "Dessa base nasceu a Jullinha.ai, um projeto de assistente inteligente em desenvolvimento, pensado para organizar informações, gerar relatórios, apoiar automações e futuramente auxiliar operações digitais de pequenos negócios.",
+  "Dessa base nasceram a Julinha e o Nexo, dois assistentes de IA que rodam em casa, com voz, memória e app Android, hoje divididos entre duas placas de vídeo.",
   "Essa jornada representa meu jeito de aprender: colocando a mão na massa, errando, corrigindo, testando e transformando recursos simples em projetos funcionais.",
 ];
 

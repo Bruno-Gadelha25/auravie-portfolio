@@ -83,8 +83,8 @@ const projectScreenshotSets: Record<string, ProjectScreenshotSet> = {
       alt: "Interface atual do Nexo: esfera de partículas no centro e, no canto, o uso do processador, da memória e das duas placas de vídeo.",
     },
     mobile: {
-      src: "/projects/jullinha-ai/mobile.png",
-      alt: "Captura mobile da Jullinha.ai, com a versão responsiva do painel da assistente.",
+      src: "/projects/nexo/interface-mobile.jpg",
+      alt: "Interface atual do Nexo no celular, em fase de teste: esfera de partículas, modo fusão, escolha do cérebro e campo de conversa.",
     },
   },
   "dashboard-netflix": {

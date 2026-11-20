@@ -57,10 +57,18 @@ function colorFor(mode: Mode, i: number): [number, number, number] {
   return part === 0 ? CYAN : part === 1 ? PINK : ORANGE;
 }
 
-export function ParticleOrb() {
+export function ParticleOrb({
+  initial = "nexo",
+  square = false,
+  readUrl = true,
+}: {
+  initial?: Mode;
+  square?: boolean;
+  readUrl?: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const modeRef = useRef<Mode>("nexo");
-  const [mode, setMode] = useState<Mode>("nexo");
+  const [mode, setMode] = useState<Mode>(initial);
 
   useEffect(() => {
     modeRef.current = mode;
@@ -68,12 +76,13 @@ export function ParticleOrb() {
 
   // ?persona=julinha ou ?persona=fusao abre direto naquele modo (bom para divulgar).
   useEffect(() => {
+    if (!readUrl) return;
     const wanted = new URLSearchParams(window.location.search).get("persona");
     if (wanted === "julinha" || wanted === "fusao") {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setMode(wanted);
     }
-  }, []);
+  }, [readUrl]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -225,7 +234,7 @@ export function ParticleOrb() {
 
   return (
     <div className="relative">
-      <div className="relative aspect-square overflow-hidden border border-line bg-[radial-gradient(circle_at_50%_45%,rgba(60,210,220,0.08),transparent_60%)] sm:aspect-[4/5]">
+      <div className={`relative aspect-square overflow-hidden border border-line bg-[radial-gradient(circle_at_50%_45%,rgba(60,210,220,0.08),transparent_60%)] ${square ? "" : "sm:aspect-[4/5]"}`}>
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
