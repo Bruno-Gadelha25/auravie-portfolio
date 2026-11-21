@@ -11,7 +11,7 @@ function normalizePublicUrl(value: string) {
 const fallbackSiteUrl =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://auravie-portfolio.vercel.app";
+    : "https://brunogadelha-dba.vercel.app";
 
 export const portfolioVariant: PortfolioVariant = normalizePortfolioVariant(
   process.env.NEXT_PUBLIC_PORTFOLIO_VARIANT,

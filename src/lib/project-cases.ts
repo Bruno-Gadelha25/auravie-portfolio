@@ -147,31 +147,31 @@ const projectCases: Record<string, ProjectCaseContent> = {
     statusNote: "Em desenvolvimento, com vitrine pública na Vercel.",
   },
   "jullinha-ai": {
-    title: "Jullinha.ai",
+    title: "Julinha + Nexo",
     description:
-      "Assistente inteligente em desenvolvimento para organização de conhecimento, automações e apoio operacional.",
+      "Dois assistentes de IA que rodam no meu PC, sem nuvem: escutam, respondem com voz, lembram das conversas e dividem o trabalho entre duas placas de vídeo.",
     context:
-      "O projeto nasceu da necessidade de transformar rotinas digitais em uma base mais centralizada, conectando conhecimento, tarefas e automações de forma mais inteligente.",
+      "Começou em maio de 2026 como um teste de voz num notebook, com Piper e Ollama. Em outubro veio o Nexo, um segundo assistente em Python, e os dois foram juntados num só sistema, a Julinha OS.",
     problem:
-      "As informações e ações estavam espalhadas entre ferramentas distintas, o que dificultava a organização e o acompanhamento consistente dos processos.",
+      "Fazer uma IA conversar por voz num PC de 2012, sem pagar nuvem, com resposta rápida o bastante para parecer conversa e sem perder o que já foi dito.",
     solution:
-      "A Jullinha.ai está sendo construída como um ecossistema modular com Node.js, Express, OpenAI, MCP SDK, Playwright, Ollama, Python, FastAPI, Obsidian e Markdown.",
+      "Uma arquitetura com vários motores: transcrição (Whisper) e voz (Kokoro) na GTX 750 Ti, o modelo de conversa na GTX 970, memória com Obsidian e ChromaDB, interface com esfera de partículas e app Android. A resposta em voz caiu de uns 73 s para 6,4 s.",
     commercialValue:
-      "Para pequenos negócios, esse tipo de assistente pode reduzir dispersão operacional, organizar relatórios e apoiar tarefas recorrentes com mais consistência.",
+      "Mostra que eu consigo montar, medir e otimizar um sistema inteiro: serviços, banco vetorial, uso de GPU, interface e app, sempre com número para provar.",
     technicalHighlights: [
-      "Arquitetura modular",
-      "Integração com Obsidian",
-      "Automação com Playwright",
-      "Uso de IA local e remota",
-      "Bases em Node.js e Python",
+      "Ollama com Qwen3 rodando local",
+      "Whisper (fala para texto) e Kokoro (texto para fala)",
+      "Memória com ChromaDB e cofre Obsidian",
+      "Interface React com esfera WebGL e telemetria das GPUs",
+      "App Android e servidor no celular com túnel seguro",
     ],
     demonstrates: [
-      "Organização de conhecimento",
-      "Automação orientada a processos",
-      "Integração entre ferramentas",
-      "Pensamento de produto com IA",
+      "Integração de vários serviços",
+      "Otimização medida (73 s para 6,4 s)",
+      "Uso de duas placas de vídeo",
+      "Produto de ponta a ponta: backend, interface e app",
     ],
-    statusNote: "Em desenvolvimento, com interface pública na Vercel e operação local em paralelo.",
+    statusNote: "Em fase de teste: uso diário em casa, com muita coisa sendo arrumada. Código privado porque guarda memória e configurações pessoais.",
   },
   "servidor-local-homelab": {
     title: "Servidor Local / Homelab",

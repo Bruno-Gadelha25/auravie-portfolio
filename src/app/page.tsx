@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, GitBranch } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
+import { ParticleOrb } from "@/components/particle-orb";
 import { Container } from "@/components/container";
 import {
   aiTimeline,
@@ -132,23 +133,10 @@ export default function Home() {
             </div>
           </div>
 
-          <figure className="hero-rise relative hidden lg:block" style={{ animationDelay: "0.35s" }}>
-            <div className="relative aspect-[4/5] overflow-hidden border border-line bg-panel">
-              <Image
-                src="/projects/nexo/interface-hud.png"
-                alt="Interface atual do Nexo rodando no PC do Bruno"
-                fill
-                priority
-                sizes="420px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/80 to-transparent p-5 pt-16">
-                <p className="text-sm text-muted">Agora, no meu PC</p>
-                <p className="font-display text-3xl text-cyan">Nexo online</p>
-              </div>
-            </div>
-            <div className="absolute -left-4 -top-4 -z-10 h-full w-full border-2 border-red" aria-hidden />
-          </figure>
+          <div className="hero-rise relative" style={{ animationDelay: "0.35s" }}>
+            <div className="absolute -left-3 -top-3 -z-10 hidden h-[calc(100%-3.5rem)] w-full border-2 border-red sm:block" aria-hidden />
+            <ParticleOrb />
+          </div>
         </Container>
 
         <div className="border-t border-line bg-panel/60">
@@ -163,17 +151,20 @@ export default function Home() {
       {/* JULINHA + NEXO */}
       <section id="julinha-nexo" className="scroll-mt-20 border-b border-line py-20 sm:py-28">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-            <SectionTitle kicker="Projeto principal" title="Julinha + Nexo" color="var(--pink)">
-              Dois assistentes de IA que rodam no meu PC, sem nuvem. A Julinha nasceu como um
-              teste de voz num notebook; o Nexo veio depois. Hoje eles conversam, lembram,
-              falam e dividem o trabalho entre duas placas de vídeo.
-            </SectionTitle>
-            <div className="flex gap-6 text-sm font-semibold">
-              <span className="flex items-center gap-2"><span className="h-3 w-3 bg-pink" /> Julinha</span>
-              <span className="flex items-center gap-2"><span className="h-3 w-3 bg-cyan" /> Nexo</span>
-              <span className="flex items-center gap-2"><span className="h-3 w-3 bg-orange" /> Placas</span>
+          <div className="grid gap-12 lg:grid-cols-[1fr_minmax(0,400px)] lg:items-center">
+            <div>
+              <SectionTitle kicker="Projeto principal" title="Julinha + Nexo" color="var(--pink)">
+                Dois assistentes de IA que rodam no meu PC, sem nuvem. A Julinha nasceu como um
+                teste de voz num notebook; o Nexo veio depois. Hoje eles conversam, lembram,
+                falam e dividem o trabalho entre duas placas de vídeo.
+              </SectionTitle>
+              <div className="mt-8 flex flex-wrap gap-6 text-sm font-semibold">
+                <span className="flex items-center gap-2"><span className="h-3 w-3 bg-pink" /> Julinha</span>
+                <span className="flex items-center gap-2"><span className="h-3 w-3 bg-cyan" /> Nexo</span>
+                <span className="flex items-center gap-2"><span className="h-3 w-3 bg-orange" /> Placas e fusão</span>
+              </div>
             </div>
+            <ParticleOrb initial="julinha" square readUrl={false} />
           </div>
 
           {/* Antes e agora */}
